@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Hoveniersbedrijf Kool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://hoveniersbedrijfkool.nl/assets/logo-x1.png">
+
+  <!-- Tailwind CSS v3 -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- AOS (small cost, nice reveal) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {font-family:'Inter',sans-serif;background:linear-gradient(to bottom right,#f0fdf4,#dcfce7);overflow-x:hidden;scroll-behavior:smooth}
+    /* butterflies animate only ≥640px */
+    @keyframes fly{0%{transform:translate(0,100vh) rotate(0)}50%{transform:translate(50vw,30vh) rotate(180deg)}100%{transform:translate(100vw,-10vh) rotate(360deg)}}
+    .butterfly{position:fixed;font-size:2rem;animation:fly 12s linear infinite;pointer-events:none;z-index:40;will-change:transform}
+    @media(max-width:639px){.butterfly{display:none}}
+  </style>
+</head>
+<body class="text-green-900">
+  <!-- Butterflies -->
+  <div class="butterfly" style="top:10vh;left:5vw;animation-delay:0s">🦋</div>
+  <div class="butterfly" style="top:20vh;left:15vw;animation-delay:3s">🦋</div>
+  <div class="butterfly" style="top:30vh;left:25vw;animation-delay:6s">🦋</div>
+  <div class="butterfly" style="top:40vh;left:35vw;animation-delay:9s">🦋</div>
+
+  <div class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="fixed inset-x-0 top-0 z-50 bg-green-800/80 backdrop-blur-md shadow-md">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
+        <a href="https://hoveniersbedrijfkool.nl/home" class="text-2xl font-semibold text-white hover:text-green-200 transition-colors">Hoveniersbedrijf&nbsp;J.&nbsp;Kool</a>
+        <nav class="flex flex-wrap gap-4 text-base">
+          <a href="https://hoveniersbedrijfkool.nl/tuinonderhoud" class="text-white hover:text-green-200 transition-colors">Tuinonderhoud</a>
+          <a href="https://hoveniersbedrijfkool.nl/levendetuinen" class="text-white hover:text-green-200 transition-colors">Levende&nbsp;Tuinen</a>
+          <a href="https://hoveniersbedrijfkool.nl/bedrijfstuinen" class="text-white hover:text-green-200 transition-colors">Bedrijfstuinen</a>
+          <a href="https://hoveniersbedrijfkool.nl/erkendleerbedrijf" class="text-white hover:text-green-200 transition-colors">Leerbedrijf</a>
+        </nav>
+      </div>
+    </header>
+    <!-- spacer for fixed header -->
+    <div class="h-16"></div>
+
+    <!-- Hero -->
+    <section class="relative w-full flex items-center justify-center h-[40vh] md:h-[500px]">
+      <!-- Background image -->
+      <div class="absolute inset-0 bg-cover bg-center lg:bg-fixed bg-no-repeat" style="background-image:url('https://hoveniersbedrijfkool.nl/assets/header-1536x1024.jpg')"></div>
+      <!-- Dark overlay -->
+      <div class="absolute inset-0 bg-black/50"></div>
+      <!-- Text block with glass for readability -->
+      <div class="relative z-10 mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 rounded-lg backdrop-blur-md bg-white/30 shadow-2xl text-center" data-aos="fade-down" data-aos-duration="900">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Altijd een verzorgde tuin! 🐝🌱</h1>
+        <p class="mt-3 text-base sm:text-lg md:text-xl text-green-100">Duurzaam groenonderhoud met hart voor biodiversiteit</p>
+      </div>
+      <!-- Scroll indicator desktop -->
+      <div class="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce text-gray-200" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 text-lg text-gray-700 space-y-6" data-aos="fade-up" data-aos-duration="800">
+      <p>Welkom op de website van Hoveniersbedrijf Kool. Al vanaf zijn jonge jaren heeft Joost Kool een passie voor alles wat groeit en bloeit. Sinds 2006 werkt hij als zelfstandig hovenier onder de naam Hoveniersbedrijf J. Kool. In de beginjaren werkte hij veelal alleen. Inmiddels is hij vrijwel fulltime met z’n tweeën aan de slag.</p>
+      <p>Joost richt zich uitsluitend op tuinonderhoud en (kleine) renovaties en niet op aanlegwerk. In het onderhoud kan hij zijn liefde voor planten en natuur kwijt. Daarbij houdt hij van goed overleg en persoonlijk contact met u als klant.</p>
+      <p>U kunt Joost bellen op zijn mobiele nummer of contact zoeken via Whatsapp. Hij is het beste bereikbaar op nummer <strong>06-14044281</strong>. Spreek gerust een bericht in op de voicemail. U wordt altijd zo snel mogelijk teruggebeld.</p>
+    </section>
+
+    <!-- SDG Banner -->
+    <section class="bg-green-100 py-4 text-center text-sm font-semibold uppercase tracking-wide text-green-900" data-aos="fade">
+      🌍 Bijdrage aan de VN‑SDG's: <span class="font-bold">Leven&nbsp;op&nbsp;het&nbsp;land 🌿 | Klimaatactie 🌎 | Duurzame&nbsp;gemeenschappen 🏡</span>
+    </section>
+
+    <!-- Services -->
+    <section class="bg-white py-16" data-aos="fade-up" data-aos-duration="800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Card component -->
+        <div class="bg-green-50 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition">
+          <img src="https://hoveniersbedrijfkool.nl/assets/tuinonderhoud.jpg" alt="Tuinonderhoud" class="w-full h-48 object-cover" loading="lazy">
+          <div class="p-6">
+            <h2 class="text-xl font-bold mb-2">Tuinonderhoud</h2>
+            <p class="text-gray-700 mb-4">Vakkundige kennis en ervaring voor een groene, verzorgde tuin.</p>
+            <a href="https://hoveniersbedrijfkool.nl/tuinonderhoud" class="text-green-700 hover:underline">Lees meer</a>
+          </div>
+        </div>
+
+        <div class="bg-green-50 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition" data-aos-delay="100">
+          <img src="https://hoveniersbedrijfkool.nl/assets/levende-tuin-kikker-800x600.jpg" alt="Levende tuinen" class="w-full h-48 object-cover" loading="lazy">
+          <div class="p-6">
+            <h2 class="text-xl font-bold mb-2">Levende tuinen</h2>
+            <p class="text-gray-700 mb-4">Meer ruimte voor planten en dieren = meer leven in uw tuin. 🐞</p>
+            <a href="https://hoveniersbedrijfkool.nl/levendetuinen" class="text-green-700 hover:underline">Lees meer</a>
+          </div>
+        </div>
+
+        <div class="bg-green-50 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition" data-aos-delay="200">
+          <img src="https://hoveniersbedrijfkool.nl/assets/bedrijfstuin-2.jpg" alt="Bedrijfstuinen" class="w-full h-48 object-cover" loading="lazy">
+          <div class="p-6">
+            <h2 class="text-xl font-bold mb-2">Bedrijfstuinen</h2>
+            <p class="text-gray-700 mb-4">Een duurzame en representatieve buitenruimte voor uw organisatie.</p>
+            <a href="https://hoveniersbedrijfkool.nl/bedrijfstuinen" class="text-green-700 hover:underline">Lees meer</a>
+          </div>
+        </div>
+
+        <div class="bg-green-50 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition sm:col-span-2 lg:col-span-1" data-aos-delay="300">
+          <img src="https://hoveniersbedrijfkool.nl/assets/sbb-beeldmerk.png" alt="Erkend leerbedrijf" class="w-full h-48 object-contain bg-white p-4" loading="lazy">
+          <div class="p-6">
+            <h2 class="text-xl font-bold mb-2">Erkend leerbedrijf</h2>
+            <p class="text-gray-700 mb-4">Wij leiden jonge vakmensen op met liefde voor groen. 🌱</p>
+            <a href="https://hoveniersbedrijfkool.nl/erkendleerbedrijf" class="text-green-700 hover:underline">Lees meer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-800 text-white py-10" data-aos="fade-up" data-aos-duration="600">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-2">
+        <div class="space-y-1">
+          <p class="text-lg font-bold">Hoveniersbedrijf J. Kool</p>
+          <p>Tuinonderhoud en -renovatie</p>
+          <p>Nieuwsteeg 15, Tricht</p>
+          <p>06 - 1404 4281</p>
+          <p><a href="mailto:info@hoveniersbedrijfkool.nl" class="underline">info@hoveniersbedrijfkool.nl</a></p>
+        </div>
+        <div class="flex flex-col items-end justify-between">
+          <img src="https://hoveniersbedrijfkool.nl/assets/logo-x1.png" alt="logo" class="w-24" loading="lazy">
+          <p class="text-sm">Design by <a href="http://www.istruction.nl/" target="_blank" class="underline">iStruction Software Services & Webdesign</a></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- AOS Init -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({once:true});</script>
+</body>
+</html>
