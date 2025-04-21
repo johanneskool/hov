@@ -1,99 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perseverantia Mockup - Tailwind CSS</title>
+    <title>A.H.D. Perseverantia - Enhanced Mockup</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <style>
+        /* Custom Tailwind Configuration & Base Styles */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'perse-primary': '#1a6c7a',   /* Original: --ast-global-color-0 */
+                        'perse-secondary': '#153243', /* Original: --ast-global-color-1 */
+                        'perse-dark': '#000f2b',      /* Original: --ast-global-color-2 */
+                        'perse-text': '#3a3a3a',      /* Original: --ast-global-color-3 */
+                        'perse-background': '#f3f9fb',/* Original: --ast-global-color-4 */
+                        'perse-light': '#ffffff',     /* Original: --ast-global-color-5 */
+                        'perse-accent': '#f04382',    /* Footer Accent */
+                        'perse-subtle': '#e8f4f8',    /* Lighter background variant */
+                    },
+                    fontFamily: {
+                        'sans': ['IBM Plex Sans', 'sans-serif'],
+                        'serif': ['EB Garamond', 'serif'],
+                    },
+                    animation: {
+                        /* Removed custom animations now handled by AOS/Alpine */
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                         /* Removed custom keyframes */
+                    }
+                }
+            }
+        }
+
+        /* Base HTML Styles */
         body {
             font-family: 'IBM Plex Sans', sans-serif;
-            background-color: #f3f9fb; /* Equivalent to --ast-global-color-4 */
-            color: #3a3a3a; /* Equivalent to --ast-global-color-3 */
+            background-color: theme('colors.perse-background');
+            color: theme('colors.perse-text');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+
         h1, h2, h3, h4, h5, h6 {
             font-family: 'EB Garamond', serif;
             font-weight: 600;
             text-transform: lowercase;
-             color: #000f2b; /* Equivalent to --ast-global-color-2 */
+            color: theme('colors.perse-dark');
         }
         h2 {
-           font-size: 1.75rem; /* 28px */
-           line-height: 1.3em;
-           margin-bottom: 0.5em;
+           font-size: 2.25rem; /* 36px */
+           line-height: 1.2em;
+           margin-bottom: 0.75em;
         }
         p {
-            line-height: 1.5em;
-            margin-bottom: 1em;
+            line-height: 1.6em;
+            margin-bottom: 1.25em;
+        }
+        p:last-child {
+             margin-bottom: 0;
         }
         a {
-             color: #1a6c7a; /* Equivalent to --ast-global-color-0 */
+             color: theme('colors.perse-primary');
+             transition: color 0.3s ease;
         }
         a:hover {
-             color: #153243; /* Equivalent to --ast-global-color-1 */
+             color: theme('colors.perse-secondary');
         }
-        .bg-primary { background-color: #1a6c7a; } /* --ast-global-color-0 */
-        .bg-secondary { background-color: #153243; } /* --ast-global-color-1 */
-        .bg-accent { background-color: #f04382; } /* Footer color */
-        .text-primary { color: #1a6c7a; } /* --ast-global-color-0 */
-        .text-secondary { color: #153243; } /* --ast-global-color-1 */
-        .text-light { color: #f3f9fb; } /* --ast-global-color-4 */
-        .text-lighter { color: #ffffff; } /* --ast-global-color-5 */
-        .bg-light { background-color: #ffffff; } /* --ast-global-color-5 */
 
-        .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            font-weight: 500;
-            font-size: 0.75rem; /* 12px */
-            line-height: 1em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 0;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-            text-align: center;
+        /* Button Styles (Unchanged) */
+        .btn { display: inline-block; padding: 14px 36px; font-weight: 500; font-size: 0.8rem; line-height: 1em; text-transform: uppercase; letter-spacing: 2.5px; border-radius: 2px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; cursor: pointer; }
+        .btn-primary { background-color: theme('colors.perse-primary'); color: theme('colors.perse-light'); border-color: theme('colors.perse-primary'); }
+        .btn-primary:hover { background-color: theme('colors.perse-secondary'); border-color: theme('colors.perse-secondary'); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .btn-outline { background-color: theme('colors.perse-light'); color: theme('colors.perse-primary'); border-color: theme('colors.perse-primary'); }
+        .btn-outline:hover { background-color: theme('colors.perse-primary'); color: theme('colors.perse-light'); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(26, 108, 122, 0.2); }
+
+        /* Header Styling (Unchanged) */
+        #main-header.scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
+
+        /* Mobile Menu Styling (Base only, transitions handled by Alpine) */
+        /* #mobile-menu { display: none; } Needs to be handled by x-show */
+
+        /* Card Styling (Unchanged) */
+        .info-card { background-color: theme('colors.perse-light'); border-radius: 8px; padding: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+
+        /* Image Hover Effects (Unchanged) */
+        .img-hover-zoom img { transition: transform 0.4s ease; }
+        .img-hover-zoom:hover img { transform: scale(1.05); }
+
+        /* Section Alternating Background (Unchanged) */
+        section:nth-child(odd) { background-color: theme('colors.perse-background'); }
+        section:nth-child(even) { background-color: theme('colors.perse-subtle'); }
+        #hero, footer { background-color: transparent !important; }
+        #dispuut-intro { background-color: theme('colors.perse-light') !important; }
+
+        /* Hide elements initially for AOS */
+        [data-aos] {
+             opacity: 0; /* Start hidden */
+             transition-property: opacity, transform; /* Ensure smooth transition */
         }
-        .btn-primary {
-            background-color: #1a6c7a; /* --ast-global-color-0 */
-            color: #ffffff; /* --ast-global-color-5 */
-            border: 2px solid #1a6c7a;
+        html.os-touch [data-aos] {
+             opacity: 1 !important; /* Disable AOS on touch devices if desired */
+             transform: none !important;
         }
-        .btn-primary:hover {
-            background-color: #153243; /* --ast-global-color-1 */
-            border-color: #153243;
-            color: #ffffff;
-        }
-         .btn-outline {
-            background-color: #ffffff; /* --ast-global-color-5 */
-            color: #1a6c7a; /* --ast-global-color-0 */
-            border: 2px solid #1a6c7a;
-        }
-        .btn-outline:hover {
-            background-color: #153243; /* --ast-global-color-1 */
-            border-color: #153243;
-            color: #ffffff;
-        }
-        /* Basic Mobile Menu */
-        #mobile-menu { display: none; }
-        #mobile-menu.show { display: block; }
+
+
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased" x-data="{ isMobileMenuOpen: false }" @keydown.escape.window="isMobileMenuOpen = false">
 
-    <header class="bg-light sticky top-0 z-50 shadow-md">
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-3 md:py-1">
+            <div class="flex justify-between items-center py-3 md:py-2">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#">
                         <span class="sr-only">Perseverantia</span>
-                        <img class="h-16 w-auto sm:h-20" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo">
+                        <img class="h-16 w-auto sm:h-20 transition-transform duration-300 hover:scale-105" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo">
                     </a>
                 </div>
                 <div class="-mr-2 -my-2 md:hidden">
-                    <button type="button" id="mobile-menu-button" class="bg-primary rounded-md p-2 inline-flex items-center justify-center text-lighter hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary" aria-expanded="false">
+                    <button type="button" @click="isMobileMenuOpen = true" class="bg-perse-primary rounded-md p-2 inline-flex items-center justify-center text-perse-light hover:bg-perse-secondary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-perse-secondary" aria-expanded="false">
                         <span class="sr-only">Open menu</span>
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -101,266 +140,284 @@
                     </button>
                 </div>
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-base font-medium text-primary hover:text-secondary">Foto’s</a>
-                    <a href="#Dispuut" class="text-base font-medium text-primary hover:text-secondary">Het Dispuut</a>
-                    <a href="https://ahdperseverantia.nl/leden/" class="text-base font-medium text-primary hover:text-secondary">Leden</a>
-                    <a href="https://ahdperseverantia.nl/novieten/" class="text-base font-medium text-primary hover:text-secondary">Novieten</a>
-                    <a href="#" class="text-base font-medium text-primary hover:text-secondary">Olifanten</a>
-                    <a href="https://ahdperseverantia.nl/oudleden/" class="text-base font-medium text-primary hover:text-secondary">Oudleden</a>
-                     <a href="#contact" class="text-base font-medium text-primary hover:text-secondary">Contact</a>
+                    <a href="#" class="text-base font-medium text-perse-primary hover:text-perse-secondary border-b-2 border-transparent hover:border-perse-secondary pb-1 transition-all">Foto’s</a>
+                    <a href="#Dispuut" class="text-base font-medium text-perse-primary hover:text-perse-secondary border-b-2 border-transparent hover:border-perse-secondary pb-1 transition-all">Het Dispuut</a>
+                    <a href="https://ahdperseverantia.nl/leden/" target="_blank" class="text-base font-medium text-perse-primary hover:text-perse-secondary border-b-2 border-transparent hover:border-perse-secondary pb-1 transition-all">Leden</a>
+                    <a href="https://ahdperseverantia.nl/novieten/" target="_blank" class="text-base font-medium text-perse-primary hover:text-perse-secondary border-b-2 border-transparent hover:border-perse-secondary pb-1 transition-all">Novieten</a>
+                    <a href="#" class="text-base font-medium text-perse-primary hover:text-perse-secondary border-b-2 border-transparent hover:border-perse-secondary pb-1 transition-all">Olifanten</a>
+                    <a href="https://ahdperseverantia.nl/oudleden/" target="_blank" class="text-base font-medium text-perse-primary hover:text-perse-secondary border-b-2 border-transparent hover:border-perse-secondary pb-1 transition-all">Oudleden</a>
+                    <a href="#contact" class="text-base font-medium text-perse-primary hover:text-perse-secondary border-b-2 border-transparent hover:border-perse-secondary pb-1 transition-all">Contact</a>
                 </nav>
-                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                   <svg class="h-6 w-6 text-primary hover:text-secondary cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                     </svg>
+                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                     <button aria-label="Search" class="text-perse-primary hover:text-perse-secondary transition-colors">
+                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden absolute top-0 inset-x-0 p-2 transition transform origin-top-right z-50">
-            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-light divide-y-2 divide-gray-100">
-                <div class="pt-5 pb-6 px-5">
-                    <div class="flex items-center justify-between">
-                        <div>
-                             <img class="h-12 w-auto" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo">
-                        </div>
-                        <div class="-mr-2">
-                            <button type="button" id="close-mobile-menu" class="bg-light rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary">
-                                <span class="sr-only">Close menu</span>
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <nav class="grid gap-y-8">
-                            <a href="#" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <span class="ml-3 text-base font-medium text-primary">Foto’s</span>
-                            </a>
-                            <a href="#Dispuut" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <span class="ml-3 text-base font-medium text-primary">Het Dispuut</span>
-                            </a>
-                             <a href="https://ahdperseverantia.nl/leden/" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <span class="ml-3 text-base font-medium text-primary">Leden</span>
-                            </a>
-                            <a href="https://ahdperseverantia.nl/novieten/" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <span class="ml-3 text-base font-medium text-primary">Novieten</span>
-                            </a>
-                            <a href="#" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <span class="ml-3 text-base font-medium text-primary">Olifanten</span>
-                            </a>
-                             <a href="https://ahdperseverantia.nl/oudleden/" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <span class="ml-3 text-base font-medium text-primary">Oudleden</span>
-                            </a>
-                             <a href="#contact" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <span class="ml-3 text-base font-medium text-primary">Contact</span>
-                            </a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+         <div x-show="isMobileMenuOpen"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 z-40 bg-black bg-opacity-25 md:hidden"
+             @click="isMobileMenuOpen = false"
+             style="display: none;" /* Initially hidden, Alpine controls display */
+             >
+            <div x-show="isMobileMenuOpen"
+                 x-transition:enter="transition ease-out duration-300 transform"
+                 x-transition:enter-start="translate-x-full"
+                 x-transition:enter-end="translate-x-0"
+                 x-transition:leave="transition ease-in duration-200 transform"
+                 x-transition:leave-start="translate-x-0"
+                 x-transition:leave-end="translate-x-full"
+                 class="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-perse-light shadow-xl p-5 overflow-y-auto"
+                 @click.stop /* Prevent closing when clicking inside panel */
+                 >
+                 <div class="flex items-center justify-between mb-8">
+                    <a href="#" @click="isMobileMenuOpen = false">
+                         <img class="h-14 w-auto" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo">
+                    </a>
+                    <button type="button" @click="isMobileMenuOpen = false" class="-mr-2 bg-perse-light rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-perse-secondary">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                 </div>
+                 <nav class="flex flex-col space-y-4">
+                     <a href="#" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Foto’s</a>
+                    <a href="#Dispuut" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Het Dispuut</a>
+                    <a href="https://ahdperseverantia.nl/leden/" target="_blank" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Leden</a>
+                    <a href="https://ahdperseverantia.nl/novieten/" target="_blank" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Novieten</a>
+                    <a href="#" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Olifanten</a>
+                    <a href="https://ahdperseverantia.nl/oudleden/" target="_blank" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Oudleden</a>
+                    <a href="#contact" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Contact</a>
+                    <div class="relative mt-4">
+                         <input type="search" placeholder="Search..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-perse-primary focus:border-perse-primary">
+                          <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-perse-primary"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></button>
+                     </div>
+                 </nav>
+             </div>
+         </div>
     </header>
 
-    <section class="relative bg-secondary text-center py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-screen" style="background-image: url('https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg'); background-size: cover; background-position: center; background-blend-mode: multiply;">
-        <div class="absolute inset-0 bg-secondary opacity-70"></div> <div class="relative z-10 flex flex-col items-center">
-           <img class="max-h-80 w-auto mb-8" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen Zonder Tekst">
-           <h2 class="text-4xl font-extrabold tracking-tight text-lighter sm:text-5xl md:text-6xl font-['EB_Garamond']">
-               a.h.d. perseverantia
-           </h2>
-            <p class="mt-4 text-lg text-light font-['EB_Garamond'] italic">
-               unus pro omnibus, omnes pro uno
-            </p>
-           <a href="#Dispuut" class="mt-8 text-lighter hover:text-primary">
-               <svg class="w-10 h-10 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-           </a>
-        </div>
-    </section>
-
-    <section id="Dispuut" class="py-16 lg:py-24 bg-light">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-            <h2 class="italic">het dispuut</h2>
-            <p class="text-lg">
-                Welkom op de website van het prachtige herendispuut A.H.D. Perseverantia. Opgericht om studentikoziteit aan te wakkeren bij C.S.V. Ichthus Eindhoven, pogen wij daarnaast ook te groeien in persoonlijke ontwikkeling van hoffelijkheid, eloquentie en geloof. Sinds 20 oktober 2011 zetten wij ons in voor Ichthus, Perseverantia en alle leden. Dit jaar onder het jaarthema “Amici usque ad aras” weten wij ons verbonden en zetten we ons in voor dispuut en vereniging. Hierbij doorbreken wij onze grenzen net als onze beschermheer Hannibal en met zijn doorzettingsvermogen drinken we tezamen onder ons devies:
-            </p>
-            <p class="text-xl italic font-semibold text-secondary mt-6">
-                “Unus pro omnibus, omnes pro uno”
-            </p>
-             <p class="mt-8 text-lg">
-                ~<br><br>
-                T.J.J. van Dieren<br>
-                <i class="font-['EB_Garamond']">Praeses der A.H.D. Perseverantia</i>
-             </p>
-        </div>
-    </section>
-
-    <section class="py-16 lg:py-24 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="text-center md:text-left">
-                    <img class="mx-auto md:mx-0 max-h-96 rounded-lg shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/hannibal-832x1024.png" alt="Hannibal Barca">
-                </div>
-                <div>
-                    <h2 class="italic">hannibal barca</h2>
-                    <p class="text-lg">
-                        Een van de meest gevreesde generaals in de geschiedenis van de mensheid. Door wilskracht en doorzettingsvermogen lukte het hem om een leger met olifanten over de Alpen te laten trekken om te proberen de grootmacht van het Romeinse rijk te gronde te richten. Zijn geniale tactiek leverde hem ongeëvenaarde bewondering op van velen. Deze heer heeft het gewaagd om een legendarische veldtocht te maken waarvan niemand dacht dat het mogelijk was.
-                    </p>
-                </div>
+    <main>
+        <section id="hero" class="relative flex flex-col items-center justify-center min-h-screen text-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                 <img src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg" alt="Hero Background" class="w-full h-full object-cover">
+                 <div class="absolute inset-0 bg-perse-secondary opacity-75"></div>
             </div>
-        </div>
-    </section>
-
-     <section class="py-16 lg:py-24 bg-light">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="text-center">
-                    <h2 class="italic">de leden</h2>
-                    <p>
-                        Een dispuut wordt voornamelijk gevormd door de studerende leden. Student zijn is vanzelfsprekend meer dan alleen studeren. Ieder lid bij het dispuut is divers, het levensdoel is echter voor iedereen gelijk: streven naar hechte vriendschappen en fabelachtige studentikoziteit. Maakt u kennis met de leden, en geniet van het unieke karakter van elke Perseverantiaan.
-                    </p>
-                    <a href="https://ahdperseverantia.nl/leden/" class="btn btn-outline mt-4">Maak kennis met de Leden</a>
-                </div>
-                <div class="text-center">
-                    <h2 class="italic">de novieten</h2>
-                    <p>
-                        Ieder jaar ontvangt het dispuut nieuw bloed en omarmt zij deze knapen om ze te vormen tot decadente heren. Dit jaar zijn er vier jonge knapen die het novietenschap op zich hebben genomen om zichzelf ooit een Perseverantiaan te mogen noemen.
-                    </p>
-                     <a href="https://ahdperseverantia.nl/novieten/" class="btn btn-outline mt-4">De novieten stellen zich voor</a>
-                </div>
-                <div class="text-center">
-                    <h2 class="italic">de oud-leden</h2>
-                    <p>
-                        Dat het dispuut relatief jong is heeft als voordeel dat de genesis van de oprichting nog vers in onze hoofden zit. Op dit moment zijn er 25 oud-leden die allemaal worden gewaardeerd voor de bijdrage die ze persoonlijk hebben geleverd aan het dispuut... Perseverantiaan blijft men voor het leven.
-                    </p>
-                    <a href="https://ahdperseverantia.nl/oudleden/" class="btn btn-outline mt-4">Bekijk het nalatenschap van de oud-Leden</a>
-                </div>
+            <div class="relative z-10" data-aos="fade-in" data-aos-duration="1200">
+                <img class="max-h-72 sm:max-h-80 md:max-h-96 w-auto mb-8 mx-auto drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen Zonder Tekst">
+                <h1 class="text-4xl font-bold tracking-tight text-perse-light sm:text-5xl md:text-7xl font-serif">
+                    a.h.d. perseverantia
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl text-perse-background font-serif italic opacity-90">
+                   unus pro omnibus, omnes pro uno
+                </p>
+                <a href="#Dispuut" class="mt-12 inline-block text-perse-light hover:text-perse-primary transition-colors">
+                   <svg class="w-10 h-10 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
+               </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-16 lg:py-24 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
-                 <div class="text-center md:col-span-1">
-                    <img class="mx-auto max-h-96" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen">
+        <section id="dispuut-intro" class="py-20 lg:py-28 bg-perse-light">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center" data-aos="fade-up">
+                <h2 class="italic text-perse-secondary">het dispuut</h2>
+                <p class="text-lg">
+                    Welkom op de website van het prachtige herendispuut A.H.D. Perseverantia. Opgericht om studentikoziteit aan te wakkeren bij C.S.V. Ichthus Eindhoven, pogen wij daarnaast ook te groeien in persoonlijke ontwikkeling van hoffelijkheid, eloquentie en geloof. Sinds 20 oktober 2011 zetten wij ons in voor Ichthus, Perseverantia en alle leden. Dit jaar onder het jaarthema “Amici usque ad aras” weten wij ons verbonden en zetten we ons in voor dispuut en vereniging. Hierbij doorbreken wij onze grenzen net als onze beschermheer Hannibal en met zijn doorzettingsvermogen drinken we tezamen onder ons devies:
+                </p>
+                <blockquote class="mt-8 border-l-4 border-perse-primary pl-6 py-2">
+                    <p class="text-2xl italic font-semibold text-perse-secondary font-serif">
+                        “Unus pro omnibus, omnes pro uno”
+                    </p>
+                </blockquote>
+                 <div class="mt-10 text-lg">
+                     <p class="text-gray-500 mb-2">~</p>
+                     <p>T.J.J. van Dieren<br>
+                     <i class="font-serif text-base">Praeses der A.H.D. Perseverantia</i></p>
                  </div>
-                 <div class="md:col-span-2">
-                     <h2 class="italic text-center md:text-left">essentialia</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mt-6 text-lg">
-                         <div>
-                            <p><strong>Opgericht:</strong> 20 oktober 2011</p>
-                            <p><strong>Kleuren:</strong> Roze en blauw</p>
-                            <p><strong>Devies:</strong> ‘Unus pro omnibus, omnes pro uno’</p>
-                            <p><strong>Beschermheer:</strong> Hannibal Barca</p>
-                         </div>
-                         <div>
-                             <p><strong>Erkend:</strong> 26 april 2012</p>
-                             <p><strong>Leden:</strong> 11</p>
-                             <p><strong>Novieten:</strong> 0</p>
-                             <p><strong>Oud leden:</strong> 25</p>
-                         </div>
+            </div>
+        </section>
+
+        <section class="py-20 lg:py-28 overflow-hidden"> {/* Added overflow-hidden for AOS horizontal */}
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2 text-center md:text-left img-hover-zoom overflow-hidden rounded-lg shadow-lg" data-aos="fade-right" data-aos-duration="800">
+                        <img loading="lazy" class="mx-auto object-contain max-h-[500px]" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/hannibal-832x1024.png" alt="Hannibal Barca">
+                    </div>
+                    <div class="md:col-span-3" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                        <h2 class="italic">hannibal barca</h2>
+                        <p class="text-lg">
+                            Een van de meest gevreesde generaals in de geschiedenis van de mensheid. Door wilskracht en doorzettingsvermogen lukte het hem om een leger met olifanten over de Alpen te laten trekken om te proberen de grootmacht van het Romeinse rijk te gronde te richten. Zijn geniale tactiek leverde hem ongeëvenaarde bewondering op van velen. Deze heer heeft het gewaagd om een legendarische veldtocht te maken waarvan niemand dacht dat het mogelijk was.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section class="py-20 lg:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center mb-16" data-aos="fade-up">
+                     <h2 class="italic">onze mensen</h2>
+                     <p class="text-lg max-w-2xl mx-auto">Van de huidige leden tot de gewaardeerde oud-leden die de basis legden.</p>
+                 </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {/* Added data-aos attributes with delays */}
+                    <div class="info-card text-center" data-aos="fade-up" data-aos-duration="600">
+                         <h3 class="text-2xl italic font-semibold mb-4">de leden</h3>
+                         <p class="text-base mb-6">Een dispuut wordt voornamelijk gevormd door de studerende leden... Student zijn is meer dan alleen studeren. Streven naar hechte vriendschappen en fabelachtige studentikoziteit. Maakt u kennis met het unieke karakter van elke Perseverantiaan.</p>
+                         <a href="https://ahdperseverantia.nl/leden/" target="_blank" class="btn btn-outline">Maak kennis</a>
+                     </div>
+                    <div class="info-card text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
+                         <h3 class="text-2xl italic font-semibold mb-4">de novieten</h3>
+                         <p class="text-base mb-6">Ieder jaar ontvangt het dispuut nieuw bloed. We omarmen deze knapen om ze te vormen tot decadente heren. Dit jaar hebben vier jonge knapen het novietenschap op zich hebben genomen om zichzelf ooit een Perseverantiaan te mogen noemen.</p>
+                         <a href="https://ahdperseverantia.nl/novieten/" target="_blank" class="btn btn-outline">Stellen zich voor</a>
+                     </div>
+                    <div class="info-card text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                         <h3 class="text-2xl italic font-semibold mb-4">de oud-leden</h3>
+                         <p class="text-base mb-6">De oprichting zit nog vers in ons geheugen. 25 oud-leden worden gewaardeerd voor hun bijdrage. De oprichters legden de basis. Vriendschappen voor het leven werden gevormd. Perseverantiaan blijft men voor het leven.</p>
+                         <a href="https://ahdperseverantia.nl/oudleden/" target="_blank" class="btn btn-outline">Het nalatenschap</a>
                      </div>
                  </div>
              </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-16 lg:py-24 bg-light">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="italic">foto's</h2>
-            <p class="max-w-3xl mx-auto text-lg mb-12">
-                Ervaar het dispuut door middel van het bekijken van deze illustere foto’s en laat u meenemen door deze prachtige mannen op een reis waar genot voor uw ogen centraal staat.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <img loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-1024x684.jpg" alt="Gala">
-                <img loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-1024x683.jpg" alt="Openingsfeest">
-                <img loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-1024x884.jpg" alt="HEFT 2023">
-                <img loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-1024x768.jpg" alt="Audumla">
-            </div>
-             <a href="https://ahdperseverantia.nl/fotos/" class="btn btn-primary">Bekijk meer foto's</a>
-        </div>
-    </section>
-
-    <section class="py-16 lg:py-24 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                 <div>
-                    <h2 class="italic">veldtochten</h2>
-                    <p class="text-lg">
-                        Hannibal trok over de Alpen, wij maken wel meerdere tochten. Diverse momenten in het jaar wordt een stad of plaats bezocht door deze groep stampende olifanten, pronkende met de kleur roze. De in blauw gemarkeerde landen hebben al van de aanwezigheid van het dispuut mogen genieten.
-                    </p>
-                </div>
-                <div class="text-center md:text-right">
-                     <img loading="lazy" class="mx-auto md:mx-0 max-h-96 rounded-lg shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/bezocht-1024x1024.png" alt="Bezochte landen kaart">
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <section class="py-16 lg:py-24 bg-light">
-         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="italic">whisky</h2>
-            <p class="max-w-3xl mx-auto text-lg mb-12">
-                Als studenten is het niet meer dan normaal om te genieten van een goudgele rakker, er is echter een drank die het dispuut nog dichter bij elkaar krijgt: whisky.
-            </p>
-            <div class="flex flex-col items-center mb-12">
-                 <img loading="lazy" class="max-h-72 w-auto rounded-lg shadow-md mb-4" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
-                 <h3 class="text-xl font-semibold">Over de whisky van de afgelopen DV:</h3>
-                 <p class="text-sm text-gray-600">(Glengoyne 15 Year Old)</p>
-             </div>
-            <a href="#" class="btn btn-primary">Whisky tijdlijn</a>
-         </div>
-     </section>
-
-     <section id="contact" class="py-16 lg:py-24 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-            <h2 class="italic">contact</h2>
-            <p class="text-lg">
-                 Uit gestalkt? Indien u met ons wilt borrelen, u graag met ons naar een gala gaat of een ander voorstel heeft neem dan contact op met de Ab Actis. Voor alle overige zaken kunt u ook contact opnemen met de Ab Actis, hij luistert graag naar uw complexe verhaal.
-            </p>
-             <p class="mt-6 text-lg">
-                 Met vriendelijke groet,<br><br>
-                 D.T. Boersma<br>
-                <i class="font-['EB_Garamond']">Ab Actis</i>
-             </p>
-             <a href="https://ahdperseverantia.nl/contact/" class="btn btn-primary mt-8">Neem contact op</a>
-         </div>
-    </section>
-
-     <footer class="bg-accent text-lighter py-5">
-         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                 <img loading="lazy" class="h-16 w-auto order-1 md:order-none" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant">
-                <div class="text-center my-4 md:my-0 order-3 md:order-none flex-grow">
-                     <p class="text-sm">Copyright © 2025 Perseverantia | Powered by Perseverantia</p>
+        <section class="py-20 lg:py-28 overflow-hidden"> {/* Added overflow-hidden */}
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                     <div class="md:order-2 text-center" data-aos="zoom-in" data-aos-duration="700">
+                         <img class="mx-auto max-h-96 drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen">
+                     </div>
+                     <div class="md:order-1" data-aos="fade-right" data-aos-duration="700">
+                         <h2 class="italic text-center md:text-left">essentialia</h2>
+                         <dl class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-lg">
+                             {/* Add data-aos with delays to list items for staggered effect */}
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="100"> <dt class="font-semibold text-perse-secondary">Opgericht:</dt> <dd class="text-perse-text">20 oktober 2011</dd> </div>
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="150"> <dt class="font-semibold text-perse-secondary">Erkend:</dt> <dd class="text-perse-text">26 april 2012</dd> </div>
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="200"> <dt class="font-semibold text-perse-secondary">Kleuren:</dt> <dd class="text-perse-text">Roze en blauw</dd> </div>
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="250"> <dt class="font-semibold text-perse-secondary">Leden:</dt> <dd class="text-perse-text">11</dd> </div>
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="300"> <dt class="font-semibold text-perse-secondary">Devies:</dt> <dd class="text-perse-text italic">‘Unus pro omnibus, omnes pro uno’</dd> </div>
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="350"> <dt class="font-semibold text-perse-secondary">Novieten:</dt> <dd class="text-perse-text">0</dd> </div>
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="400"> <dt class="font-semibold text-perse-secondary">Beschermheer:</dt> <dd class="text-perse-text">Hannibal Barca</dd> </div>
+                             <div class="border-l-2 border-perse-primary pl-4 py-1" data-aos="fade-right" data-aos-delay="450"> <dt class="font-semibold text-perse-secondary">Oud leden:</dt> <dd class="text-perse-text">25</dd> </div>
+                         </dl>
+                     </div>
                  </div>
-                 <img loading="lazy" class="h-16 w-auto order-2 md:order-none" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant">
+            </div>
+        </section>
+
+        <section class="py-20 lg:py-28">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                 <div data-aos="fade-up">
+                     <h2 class="italic">foto's</h2>
+                     <p class="max-w-3xl mx-auto text-lg mb-16">Ervaar het dispuut door middel van het bekijken van deze illustere foto’s en laat u meenemen door deze prachtige mannen op een reis waar genot voor uw ogen centraal staat.</p>
+                 </div>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                     {/* Added data-aos with delays to gallery items */}
+                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-1024x684.jpg" alt="Gala"> </div>
+                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-1024x683.jpg" alt="Openingsfeest"> </div>
+                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-1024x884.jpg" alt="HEFT 2023"> </div>
+                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-1024x768.jpg" alt="Audumla"> </div>
+                 </div>
+                 <div data-aos="fade-up">
+                     <a href="https://ahdperseverantia.nl/fotos/" target="_blank" class="btn btn-primary">Bekijk meer foto's</a>
+                 </div>
+             </div>
+         </section>
+
+         <section class="py-20 lg:py-28 overflow-hidden"> {/* Added overflow-hidden */}
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                     <div class="md:order-2 text-center md:text-right img-hover-zoom overflow-hidden rounded-lg" data-aos="fade-left" data-aos-duration="800">
+                         <img loading="lazy" class="mx-auto md:ml-auto max-h-96 w-auto object-contain drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/bezocht-1024x1024.png" alt="Bezochte landen kaart">
+                     </div>
+                     <div class="md:order-1" data-aos="fade-right" data-aos-duration="800">
+                         <h2 class="italic">veldtochten</h2>
+                         <p class="text-lg">Hannibal trok over de Alpen, wij maken wel meerdere tochten. Diverse momenten in het jaar wordt een stad of plaats bezocht door deze groep stampende olifanten, pronkende met de kleur roze. De in blauw gemarkeerde landen hebben al van de aanwezigheid van het dispuut mogen genieten.</p>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+         <section class="py-20 lg:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div data-aos="fade-up">
+                    <h2 class="italic">whisky</h2>
+                    <p class="max-w-3xl mx-auto text-lg mb-12">Als studenten is het niet meer dan normaal om te genieten van een goudgele rakker, er is echter een drank die het dispuut nog dichter bij elkaar krijgt: whisky.</p>
+                </div>
+                <div class="flex flex-col items-center mb-12" data-aos="zoom-in-up" data-aos-duration="700">
+                    <div class="img-hover-zoom overflow-hidden rounded-lg shadow-lg mb-6 max-w-[250px]">
+                        <img loading="lazy" class="w-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
+                    </div>
+                    <h3 class="text-xl font-semibold text-perse-secondary">Over de whisky van de afgelopen DV:</h3>
+                    <p class="text-base text-gray-600">(Glengoyne 15 Year Old)</p>
+                </div>
+                <div data-aos="fade-up">
+                    <a href="#" class="btn btn-primary">Whisky tijdlijn</a>
+                </div>
+            </div>
+        </section>
+
+         <section id="contact" class="py-20 lg:py-28">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center" data-aos="fade-up">
+                <h2 class="italic text-perse-secondary">contact</h2>
+                <p class="text-lg">Uit gestalkt? Indien u met ons wilt borrelen, u graag met ons naar een gala gaat of een ander voorstel heeft neem dan contact op met de Ab Actis. Voor alle overige zaken kunt u ook contact opnemen met de Ab Actis, hij luistert graag naar uw complexe verhaal.</p>
+                <div class="mt-8 text-lg">
+                     <p>Met vriendelijke groet,</p>
+                     <p class="mt-4">D.T. Boersma<br>
+                     <i class="font-serif text-base">Ab Actis</i></p>
+                 </div>
+                 <a href="https://ahdperseverantia.nl/contact/" target="_blank" class="btn btn-primary mt-10">Neem contact op</a>
+             </div>
+         </section>
+    </main>
+
+     <footer class="bg-perse-accent text-perse-light py-8 mt-20">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="flex flex-col md:flex-row justify-between items-center">
+                 <img loading="lazy" class="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity transform -rotate-6 hover:rotate-0" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant">
+                 <div class="text-center my-6 md:my-0 flex-grow mx-8" data-aos="fade-in" data-aos-delay="100">
+                     <p class="text-sm font-medium">&copy; 2025 A.H.D. Perseverantia</p>
+                     <p class="text-xs opacity-70 mt-1">Unus pro omnibus, omnes pro uno</p>
+                 </div>
+                 <img loading="lazy" class="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity transform rotate-6 hover:rotate-0" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant">
              </div>
          </div>
      </footer>
 
+     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
      <script>
-        // Basic Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+         // --- Initialize AOS ---
+         AOS.init({
+             duration: 600, // values from 0 to 3000, with step 50ms
+             easing: 'ease-in-out', // default easing for AOS animations
+             once: true, // whether animation should happen only once - while scrolling down
+             mirror: false, // whether elements should animate out while scrolling past them
+             anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+         });
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.add('show');
-        });
+         // --- Header Scroll Effect (Vanilla JS) ---
+         document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            const scrollThreshold = 50;
 
-        closeMobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.remove('show');
-        });
+            const handleScroll = () => {
+                 if (window.scrollY > scrollThreshold) {
+                     header.classList.add('scrolled');
+                 } else {
+                     header.classList.remove('scrolled');
+                 }
+             };
+             window.addEventListener('scroll', handleScroll, { passive: true });
+             handleScroll(); // Initial check
+         });
 
-        // Close menu when a link is clicked
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                 mobileMenu.classList.remove('show');
-            });
-        });
+         // Alpine.js manages the mobile menu state and transitions via x-data, x-show, @click etc.
+         // No additional custom JS needed for the menu toggle itself.
      </script>
 
 </body>
