@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H.D. Perseverantia - Final Refined Mockup</title>
+    <title>A.H.D. Perseverantia - Final Polished Mockup</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
                         'perse-secondary': '#153243',
                         'perse-dark': '#000f2b',
                         'perse-text': '#3a3a3a',
-                        'perse-background': '#f3f9fb',
+                        'perse-background': '#f3f9fb', /* Base page background */
                         'perse-light': '#ffffff',
                         'perse-accent': '#f04382',
                         'perse-subtle': '#e8f4f8',
@@ -40,7 +40,7 @@
         body { font-family: 'IBM Plex Sans', sans-serif; background-color: theme('colors.perse-background'); color: theme('colors.perse-text'); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         h1, h2, h3, h4, h5, h6 { font-family: 'EB Garamond', serif; font-weight: 700; text-transform: lowercase; color: theme('colors.perse-dark'); }
 
-        h1 { font-weight: 700; } /* Ensure H1 is also bold */
+        h1 { font-weight: 700; }
         h2 {
            font-size: 3.75rem;
            line-height: 1.1;
@@ -61,21 +61,15 @@
 
         p { line-height: 1.6em; margin-bottom: 1.25em; }
         p:last-child { margin-bottom: 0; }
-
-        /* --- ADJUSTMENT 3: Use Accent Color on Link Hover --- */
         a { color: theme('colors.perse-primary'); transition: color 0.3s ease; }
         a:hover { color: theme('colors.perse-accent'); }
 
         .btn { display: inline-block; padding: 14px 36px; font-weight: 500; font-size: 0.8rem; line-height: 1em; text-transform: uppercase; letter-spacing: 2.5px; border-radius: 2px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; cursor: pointer; }
         .btn-primary { background-color: theme('colors.perse-primary'); color: theme('colors.perse-light'); border-color: theme('colors.perse-primary'); }
-        /* --- ADJUSTMENT 3: Use Accent Color on Button Hover --- */
         .btn-primary:hover { background-color: theme('colors.perse-accent'); border-color: theme('colors.perse-accent'); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(240, 67, 130, 0.3); color: theme('colors.perse-light'); }
 
         .btn-outline { background-color: theme('colors.perse-light'); color: theme('colors.perse-primary'); border-color: theme('colors.perse-primary'); }
-        /* --- ADJUSTMENT 3: Use Accent Color on Outline Button Hover --- */
-        .btn-outline:hover { background-color: theme('colors.perse-primary'); border-color: theme('colors.perse-primary'); color: theme('colors.perse-light'); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(26, 108, 122, 0.2); } /* Kept primary bg for contrast, hover text uses accent */
-        .btn-outline:hover { color: theme('colors.perse-light'); } /* Ensure text stays light on hover */
-
+        .btn-outline:hover { background-color: theme('colors.perse-primary'); border-color: theme('colors.perse-primary'); color: theme('colors.perse-light'); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(26, 108, 122, 0.2); }
 
         #main-header.scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
 
@@ -85,16 +79,45 @@
         .img-hover-zoom img { transition: transform 0.4s ease; }
         .img-hover-zoom:hover img { transform: scale(1.05); }
 
-        section:nth-child(odd) { background-color: theme('colors.perse-background'); }
-        section:nth-child(even) { background-color: theme('colors.perse-subtle'); }
-        #hero, footer { background-color: transparent !important; }
-        #dispuut-intro { background-color: theme('colors.perse-light') !important; }
+        main > section { transition: background-color 0.3s ease; } /* Smooth transition for bg color change */
+        main > section:nth-child(odd) { background-color: theme('colors.perse-light'); color: theme('colors.perse-text'); }
+        main > section:nth-child(even) { background-color: theme('colors.perse-accent'); color: theme('colors.perse-light');}
+
+        main > section:nth-child(odd) h2,
+        main > section:nth-child(odd) h3 { color: theme('colors.perse-dark'); }
+        main > section:nth-child(odd) .info-card h3 { color: theme('colors.perse-dark'); }
+        main > section:nth-child(odd) .text-perse-secondary { color: theme('colors.perse-secondary'); }
+        main > section:nth-child(odd) .text-gray-600 { color: theme('colors.gray.600'); }
+        main > section:nth-child(odd) dl dd { color: theme('colors.perse-text'); }
+        main > section:nth-child(odd) .btn-outline { background-color: theme('colors.perse-light'); color: theme('colors.perse-primary'); border-color: theme('colors.perse-primary'); }
+        main > section:nth-child(odd) .btn-outline:hover { background-color: theme('colors.perse-primary'); color: theme('colors.perse-light'); border-color: theme('colors.perse-primary'); }
+        main > section:nth-child(odd) a { color: theme('colors.perse-primary'); }
+        main > section:nth-child(odd) a:hover { color: theme('colors.perse-accent'); }
+        main > section:nth-child(odd) .info-card { background-color: theme('colors.perse-light'); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); }
+
+
+        main > section:nth-child(even) h2,
+        main > section:nth-child(even) h3 { color: theme('colors.perse-light'); }
+        main > section:nth-child(even) .info-card h3 { color: theme('colors.perse-light'); }
+        main > section:nth-child(even) .text-perse-secondary { color: theme('colors.perse-light'); }
+        main > section:nth-child(even) .text-gray-600 { color: rgba(255, 255, 255, 0.7); }
+        main > section:nth-child(even) dl dd { color: rgba(255, 255, 255, 0.9); }
+        main > section:nth-child(even) .btn-outline { background-color: theme('colors.perse-accent'); color: theme('colors.perse-light'); border-color: theme('colors.perse-light'); }
+        main > section:nth-child(even) .btn-outline:hover { background-color: theme('colors.perse-light'); color: theme('colors.perse-accent'); border-color: theme('colors.perse-light'); }
+        main > section:nth-child(even) a { color: theme('colors.perse-light'); text-decoration: underline; } /* Underline links on pink for visibility */
+        main > section:nth-child(even) a:hover { color: theme('colors.perse-light'); opacity: 0.8; }
+        main > section:nth-child(even) .info-card { background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: none; }
+        main > section:nth-child(even) .info-card p { color: rgba(255, 255, 255, 0.9);}
+
+        #hero, footer { background-color: transparent !important; color: theme('colors.perse-light') !important; }
+        #hero h1, #hero h2, #hero h3 { color: theme('colors.perse-light') !important; }
+        #dispuut-intro { background-color: theme('colors.perse-light') !important; color: theme('colors.perse-text') !important; }
+        #dispuut-intro h2, #dispuut-intro h3 { color: theme('colors.perse-dark') !important; }
+        #dispuut-intro blockquote { border-color: theme('colors.perse-accent') !important; }
+        #dispuut-intro .text-perse-secondary { color: theme('colors.perse-secondary') !important; }
 
         [data-aos] { opacity: 0; transition-property: opacity, transform; }
         html.os-touch [data-aos] { opacity: 1 !important; transform: none !important; }
-
-        /* Removed text-shadow from hero text */
-        /* #hero h1, #hero p { text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75); } */
 
     </style>
 </head>
@@ -107,16 +130,16 @@
                     <a href="#"><span class="sr-only">Perseverantia</span><img class="h-16 w-auto sm:h-20 transition-transform duration-300 hover:scale-105" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo"></a>
                 </div>
                 <div class="-mr-2 -my-2 md:hidden">
-                    <button type="button" @click="isMobileMenuOpen = true" class="bg-perse-primary rounded-md p-2 inline-flex items-center justify-center text-perse-light hover:bg-perse-accent focus:outline-none focus:ring-2 focus:ring-inset focus:ring-perse-secondary" aria-expanded="false"><span class="sr-only">Open menu</span><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button>
+                    <button type="button" @click="isMobileMenuOpen = true" class="bg-perse-primary rounded-md p-2 inline-flex items-center justify-center text-white hover:bg-perse-accent focus:outline-none focus:ring-2 focus:ring-inset focus:ring-perse-secondary" aria-expanded="false"><span class="sr-only">Open menu</span><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button>
                 </div>
                 <nav class="hidden md:flex space-x-8">
-                    <a href="https://ahdperseverantia.nl/fotos/" class="text-base font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Foto’s</a>
-                    <a href="#Dispuut" class="text-base font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Het Dispuut</a>
-                    <a href="https://ahdperseverantia.nl/leden/" target="_blank" class="text-base font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Leden</a>
-                    <a href="https://ahdperseverantia.nl/novieten/" target="_blank" class="text-base font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Novieten</a>
-                    <a href="https://ahdperseverantia.nl/olifanten/" class="text-base font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Olifanten</a>
-                    <a href="https://ahdperseverantia.nl/oudleden/" target="_blank" class="text-base font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">oudleden</a>
-                    <a href="#contact" class="text-base font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Contact</a>
+                    <a href="https://ahdperseverantia.nl/fotos/" class="text-lg font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Foto’s</a>
+                    <a href="#Dispuut" class="text-lg font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Het Dispuut</a>
+                    <a href="https://ahdperseverantia.nl/leden/" target="_blank" class="text-lg font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Leden</a>
+                    <a href="https://ahdperseverantia.nl/novieten/" target="_blank" class="text-lg font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Novieten</a>
+                    <a href="https://ahdperseverantia.nl/olifanten/" class="text-lg font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Olifanten</a>
+                    <a href="https://ahdperseverantia.nl/oudleden/" target="_blank" class="text-lg font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">oudleden</a>
+                    <a href="#contact" class="text-lg font-medium text-perse-primary hover:text-perse-accent border-b-2 border-transparent hover:border-perse-accent pb-1 transition-all">Contact</a>
                 </nav>
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                     <button aria-label="Search" class="text-perse-primary hover:text-perse-accent transition-colors"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></button>
@@ -147,38 +170,35 @@
         <section id="hero" class="relative flex flex-col items-center justify-center min-h-screen text-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div class="absolute inset-0 z-0">
                  <img src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg" alt="Hero Background" class="w-full h-full object-cover">
-                 {/* Changed overlay to black, opacity 60 */}
                  <div class="absolute inset-0 bg-black opacity-60"></div>
             </div>
             <div class="relative z-10" data-aos="fade-in" data-aos-duration="1200">
                 <img class="max-h-72 sm:max-h-80 md:max-h-96 w-auto mb-8 mx-auto drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen Zonder Tekst">
-                {/* Ensured text-perse-light (white) is applied */}
-                <h1 class="text-4xl font-bold tracking-tight text-perse-light sm:text-5xl md:text-7xl font-serif">
+                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-7xl font-serif">
                     A.H.D. Perseverantia
                 </h1>
-                <p class="mt-4 text-xl md:text-2xl text-perse-light font-serif italic">
+                <p class="mt-4 text-xl md:text-2xl text-white font-serif italic">
                    “Unus pro omnibus, omnes pro uno”
                 </p>
-                <a href="#Dispuut" class="mt-12 inline-block text-perse-light hover:text-perse-accent transition-colors">
+                <a href="#Dispuut" class="mt-12 inline-block text-white hover:text-perse-accent transition-colors">
                    <svg class="w-10 h-10 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
                </a>
             </div>
         </section>
 
-        <section id="dispuut-intro" class="py-20 lg:py-28 bg-perse-light">
+        <section id="dispuut-intro" class="py-20 lg:py-28">
              <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center" data-aos="fade-up">
-                <h2 class="italic text-perse-secondary"><i>Het Dispuut</i></h2>
+                <h2 class="italic"><i>Het Dispuut</i></h2>
                 <p class="text-lg">
                     Welkom op de website van het prachtige herendispuut A.H.D. Perseverantia. Opgericht om studentikoziteit aan te wakkeren bij C.S.V. Ichthus Eindhoven, pogen wij daarnaast ook te groeien in persoonlijke ontwikkeling van hoffelijkheid, eloquentie en geloof. Sinds 20 oktober 2011 zetten wij ons in voor Ichthus, Perseverantia en alle leden. Dit jaar onder het jaarthema “Amici usque ad aras” weten wij ons verbonden en zetten we ons in voor dispuut en vereniging. Hierbij doorbreken wij onze grenzen net als onze beschermheer Hannibal en met zijn doorzettingsvermogen drinken we tezamen onder ons devies:
                 </p>
-                {/* --- ADJUSTMENT 3: Use Accent Color on Border --- */}
                 <blockquote class="mt-8 border-l-4 border-perse-accent pl-6 py-2">
                     <p class="text-2xl italic font-semibold text-perse-secondary font-serif">
                        <i>“Unus pro omnibus, omnes pro uno”</i>
                     </p>
                 </blockquote>
                  <div class="mt-10 text-lg">
-                     <p class="text-gray-500 mb-2">~</p>
+                     <p class="text-gray-600 mb-2">~</p>
                      <p>T.J.J. van Dieren<br>
                      <i class="font-serif text-base">Praeses der A.H.D. Perseverantia</i></p>
                  </div>
@@ -235,15 +255,14 @@
                      <div class="md:order-1" data-aos="fade-right" data-aos-duration="700">
                          <h2 class="italic text-center md:text-left"><i>Essentialia</i></h2>
                          <dl class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-lg">
-                             {/* --- ADJUSTMENT 3: Use Accent Color on Border --- */}
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="100"> <dt class="font-semibold text-perse-secondary">Opgericht:</dt> <dd class="text-perse-text">20 oktober 2011</dd> </div>
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="150"> <dt class="font-semibold text-perse-secondary">Erkend:</dt> <dd class="text-perse-text">26 april 2012</dd> </div>
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="200"> <dt class="font-semibold text-perse-secondary">Kleuren:</dt> <dd class="text-perse-text">Roze en blauw</dd> </div>
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="250"> <dt class="font-semibold text-perse-secondary">Leden:</dt> <dd class="text-perse-text">11</dd> </div>
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="300"> <dt class="font-semibold text-perse-secondary">Devies:</dt> <dd class="text-perse-text italic">‘Unus pro omnibus, omnes pro uno’</dd> </div>
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="350"> <dt class="font-semibold text-perse-secondary">Novieten:</dt> <dd class="text-perse-text">0</dd> </div>
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="400"> <dt class="font-semibold text-perse-secondary">Beschermheer:</dt> <dd class="text-perse-text">Hannibal Barca</dd> </div>
-                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="450"> <dt class="font-semibold text-perse-secondary">Oud leden:</dt> <dd class="text-perse-text">25</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="100"> <dt class="font-semibold text-white">Opgericht:</dt> <dd>20 oktober 2011</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="150"> <dt class="font-semibold text-white">Erkend:</dt> <dd>26 april 2012</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="200"> <dt class="font-semibold text-white">Kleuren:</dt> <dd>Roze en blauw</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="250"> <dt class="font-semibold text-white">Leden:</dt> <dd>11</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="300"> <dt class="font-semibold text-white">Devies:</dt> <dd class="italic">‘Unus pro omnibus, omnes pro uno’</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="350"> <dt class="font-semibold text-white">Novieten:</dt> <dd>0</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="400"> <dt class="font-semibold text-white">Beschermheer:</dt> <dd>Hannibal Barca</dd> </div>
+                             <div class="border-l-2 border-perse-accent pl-4 py-1" data-aos="fade-right" data-aos-delay="450"> <dt class="font-semibold text-white">Oud leden:</dt> <dd>25</dd> </div>
                          </dl>
                      </div>
                  </div>
@@ -292,11 +311,11 @@
                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-lg mb-6 max-w-[250px]">
                         <img loading="lazy" class="w-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
                     </div>
-                    <h3 class="italic font-semibold text-perse-secondary">Over de whisky van de afgelopen DV:</h3>
-                    <p class="text-base text-gray-600">(Glengoyne 15 Year Old)</p>
+                    <h3 class="italic font-semibold text-white">Over de whisky van de afgelopen DV:</h3>
+                    <p class="text-base text-gray-200">(Glengoyne 15 Year Old)</p>
                 </div>
                 <div data-aos="fade-up">
-                    <a href="https://ahdperseverantia.nl/whisky/" class="btn btn-primary">Whisky tijdlijn</a>
+                    <a href="https://ahdperseverantia.nl/whisky/" class="btn btn-outline">Whisky tijdlijn</a>
                 </div>
             </div>
         </section>
@@ -315,7 +334,7 @@
          </section>
     </main>
 
-    <footer class="bg-perse-accent text-perse-light py-8 mt-20">
+    <footer class="bg-perse-accent text-white py-8 mt-20">
          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
              <div class="flex flex-col items-center text-center">
                  <div class="mb-4" data-aos="fade-in" data-aos-delay="100">
