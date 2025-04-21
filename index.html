@@ -7,46 +7,36 @@
     <link rel="icon" href="https://ahdperseverantia.nl/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Basis lettertypes dichter bij origineel */
         body {
-            font-family: 'Times New Roman', Times, serif; /* Standaard Serif voor body tekst */
-            color: #000000; /* Zwarte tekst */
+            font-family: 'Times New Roman', Times, serif;
+            color: #000000;
         }
         h1, h2, h3, h4, h5, h6, nav a {
-             /* Standaard Sans-serif voor koppen en navigatie */
-             /* Tailwind's font-sans gebruikt een moderne stack; we laten dit voor nu om conflicten te minimaliseren */
-             /* Als je specifiek Arial wilt: font-family: Arial, Helvetica, sans-serif; */
         }
-        /* Standaard link kleur */
         a {
-            color: #0000EE; /* Standaard blauw voor links */
+            color: #0000EE;
         }
         a:hover {
-            color: #0000AA; /* Iets donkerder bij hover */
+            color: #0000AA;
         }
-        /* Specifieke kleur voor H1 titel zoals in vorige mockup */
         h1 {
-             color: #1E40AF; /* Tailwind's blue-800 - kan aangepast worden naar exacter origineel */
+             color: #1E40AF;
         }
-         /* Specifieke kleur voor H2/H3 titels */
         h2, h3 {
-             color: #1D4ED8; /* Tailwind's blue-700 - kan aangepast worden naar exacter origineel */
+             color: #1D4ED8;
         }
     </style>
 </head>
-<body class="bg-white"> {/* Achtergrond van pagina nu wit */}
+<body class="bg-white">
 
-    <header class="bg-white shadow-md"> {/* Header achtergrond wit, behoud schaduw voor scheiding */}
+    <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
             <div class="flex items-center mb-4 md:mb-0">
-                {/* Logo werkt via externe URL */}
                 <img src="https://ahdperseverantia.nl/perseverantia%20logo.gif" alt="A.H.D. Perseverantia Logo" class="h-16 mr-4">
-                {/* H1 titel styling via <style> block */}
                 <h1 class="text-2xl md:text-3xl font-bold">A.H.D. Perseverantia</h1>
             </div>
 
             <nav>
-                {/* Navigatie links styling via <a> tag in <style> block */}
                 <ul class="flex flex-wrap justify-center md:justify-end space-x-4">
                     <li><a href="#" class="hover:underline">Welkom</a></li>
                     <li><a href="#" class="hover:underline">Agenda</a></li>
@@ -63,11 +53,8 @@
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        {/* Content kaart: witte achtergrond, behoud schaduw/afgeronde hoeken voor structuur */}
-        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-300"> {/* Eventueel een lichte rand toevoegen */}
-            {/* H2 titel styling via <style> block */}
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-300">
             <h2 class="text-2xl font-semibold mb-4">Welkom</h2>
-            {/* Body tekst styling (Times New Roman, zwart) via body style */}
             <p class="mb-4 leading-relaxed">
                 Welkom op de (vernieuwde concept) website van de Arnhemse Hengelaars Detaillistenvereniging Perseverantia.
                 Deze vereniging, opgericht in 1935, zet zich in voor de belangen van de hengelsportdetailhandel in de regio Arnhem.
@@ -81,37 +68,30 @@
             </p>
 
             <div class="mt-8 pt-6 border-t border-gray-200">
-                 {/* H3 titel styling via <style> block */}
                 <h3 class="text-xl font-semibold mb-3">Laatste Nieuws (voorbeeld)</h3>
                 <p class="mb-2"><strong>20-04-2025:</strong> Aankomende vergadering gepland. Details volgen via de Agenda.</p>
                 <p class="mb-2"><strong>15-03-2025:</strong> Succesvolle viswedstrijd gehouden.</p>
-                {/* Link styling via <a> tag in <style> block */}
                 <a href="#" class="hover:underline">Lees meer nieuws...</a>
             </div>
 
              <div class="mt-8 pt-6 border-t border-gray-200">
-                 {/* H3 titel styling via <style> block */}
                 <h3 class="text-xl font-semibold mb-3">Contactgegevens (voorbeeld)</h3>
                 <p>Secretariaat A.H.D. Perseverantia</p>
                 <p>Voorbeeldstraat 1</p>
                 <p>1234 AB Voorbeeldstad</p>
-                {/* Link styling (ook voor mailto) via <a> tag in <style> block */}
                 <p>Email: <a href="mailto:info@voorbeeld.nl" class="hover:underline">info@voorbeeld.nl</a></p>
              </div>
         </div>
     </main>
 
-    {/* Footer met blauwe achtergrond en witte tekst */}
     <footer class="bg-[#0000EE] text-white mt-12 py-6">
         <div class="container mx-auto px-4 text-center text-sm">
-            {/* Footer tekst styling via body style (Times) en kleur via footer class */}
             <p>&copy; <span id="currentYear"></span> A.H.D. Perseverantia. Alle rechten voorbehouden.</p>
             <p class="mt-1">Mock-up ontwerp voor offerte.</p>
         </div>
     </footer>
 
     <script>
-        // JavaScript om het huidige jaar in de footer te zetten
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 
