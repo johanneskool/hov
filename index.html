@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H.D. Perseverantia - Final Mockup</title>
+    <title>A.H.D. Perseverantia - Bugfix & Bold Mockup</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
                         'perse-dark': '#000f2b',
                         'perse-text': '#3a3a3a',
                         'perse-background': '#f3f9fb',
-                        'perse-light': '#ffffff',
+                        'perse-light': '#ffffff', /* Dit IS wit */
                         'perse-accent': '#f04382',
                         'perse-subtle': '#e8f4f8',
                     },
@@ -38,23 +38,25 @@
         }
 
         body { font-family: 'IBM Plex Sans', sans-serif; background-color: theme('colors.perse-background'); color: theme('colors.perse-text'); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'EB Garamond', serif; font-weight: 600; text-transform: lowercase; color: theme('colors.perse-dark'); }
+        h1, h2, h3, h4, h5, h6 { font-family: 'EB Garamond', serif; font-weight: 700; /* Bold weight */ text-transform: lowercase; color: theme('colors.perse-dark'); }
 
+        /* --- BUGFIX 2: Headings NOG groter & vetter --- */
         h2 {
-           font-size: 3rem;
-           line-height: 1.15em;
-           margin-bottom: 1em;
+           font-size: 3.75rem; /* 60px */
+           line-height: 1.1;
+           margin-bottom: 1.1em;
+           font-weight: 700; /* Explicitly bold */
         }
-        /* --- ADJUSTMENT 4: Larger H3 Titles --- */
         h3 {
-            font-size: 1.75rem; /* 28px - Increased from default/previous */
-            line-height: 1.25em;
-            margin-bottom: 0.75em; /* Adjusted margin */
+            font-size: 2.25rem; /* 36px */
+            line-height: 1.2;
+            margin-bottom: 0.8em;
+            font-weight: 700; /* Explicitly bold */
         }
 
         @media (max-width: 768px) {
-            h2 { font-size: 2.5rem; }
-            h3 { font-size: 1.5rem; } /* Adjusted h3 for mobile */
+            h2 { font-size: 2.75rem; } /* Responsive size */
+            h3 { font-size: 1.75rem; } /* Responsive size */
         }
 
         p { line-height: 1.6em; margin-bottom: 1.25em; }
@@ -84,7 +86,12 @@
         [data-aos] { opacity: 0; transition-property: opacity, transform; }
         html.os-touch [data-aos] { opacity: 1 !important; transform: none !important; }
 
-        #hero h1, #hero p { text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); }
+        /* --- BUGFIX 3: Hero tekst leesbaarheid (sterkere shadow) --- */
+        #hero h1, #hero p {
+            /* Text is already white (text-perse-light) */
+            /* Increased shadow intensity */
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+        }
 
     </style>
 </head>
@@ -114,10 +121,10 @@
             </div>
         </div>
         <div x-show="isMobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-40 bg-black bg-opacity-25 md:hidden" @click="isMobileMenuOpen = false" style="display: none;">
-            <div x-show="isMobileMenuOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" class="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-perse-light shadow-xl p-5 overflow-y-auto" @click.stop>
+             <div x-show="isMobileMenuOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" class="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-white shadow-xl p-5 overflow-y-auto" @click.stop>
                 <div class="flex items-center justify-between mb-8">
                     <a href="#" @click="isMobileMenuOpen = false"><img class="h-14 w-auto" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo"></a>
-                    <button type="button" @click="isMobileMenuOpen = false" class="-mr-2 bg-perse-light rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-perse-secondary"><span class="sr-only">Close menu</span><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                    <button type="button" @click="isMobileMenuOpen = false" class="-mr-2 bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-perse-secondary"><span class="sr-only">Close menu</span><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
                 </div>
                 <nav class="flex flex-col space-y-4">
                     <a href="#" @click="isMobileMenuOpen = false" class="text-lg font-medium text-perse-primary hover:text-perse-secondary py-2">Foto’s</a>
@@ -137,14 +144,16 @@
         <section id="hero" class="relative flex flex-col items-center justify-center min-h-screen text-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div class="absolute inset-0 z-0">
                  <img src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg" alt="Hero Background" class="w-full h-full object-cover">
-                 <div class="absolute inset-0 bg-perse-secondary opacity-60"></div>
+                  {/* --- BUGFIX 3: Hero tekst leesbaarheid -> Overlay iets donkerder --- */}
+                 <div class="absolute inset-0 bg-perse-secondary opacity-70"></div>
             </div>
             <div class="relative z-10" data-aos="fade-in" data-aos-duration="1200">
                 <img class="max-h-72 sm:max-h-80 md:max-h-96 w-auto mb-8 mx-auto drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen Zonder Tekst">
+                {/* --- BUGFIX 3: Hero tekst -> Explicitly white using Tailwind class --- */}
                 <h1 class="text-4xl font-bold tracking-tight text-perse-light sm:text-5xl md:text-7xl font-serif">
                     a.h.d. perseverantia
                 </h1>
-                <p class="mt-4 text-xl md:text-2xl text-perse-background font-serif italic opacity-90">
+                <p class="mt-4 text-xl md:text-2xl text-perse-light font-serif italic opacity-95">
                    unus pro omnibus, omnes pro uno
                 </p>
                 <a href="#Dispuut" class="mt-12 inline-block text-perse-light hover:text-perse-primary transition-colors">
@@ -304,6 +313,7 @@
 
     <footer class="bg-perse-accent text-perse-light py-8 mt-20">
          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+              {/* --- BUGFIX 3: Single, centered footer image --- */}
              <div class="flex flex-col items-center text-center">
                  <div class="mb-4" data-aos="fade-in" data-aos-delay="100">
                      <p class="text-sm font-medium">&copy; 2025 A.H.D. Perseverantia</p>
