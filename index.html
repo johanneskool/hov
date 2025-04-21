@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H.D. Perseverantia - Final Size & Color Fix</title>
+    <title>A.H.D. Perseverantia - DRY & Centralized</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
+        /* Tailwind Config (als basis) */
         tailwind.config = {
             theme: {
                 extend: {
@@ -37,65 +38,71 @@
             }
         }
 
-        body { font-family: 'IBM Plex Sans', sans-serif; background-color: theme('colors.perse-background'); color: theme('colors.perse-text'); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'EB Garamond', serif; font-weight: 700; text-transform: lowercase; color: theme('colors.perse-dark'); }
+        /* Basis Stijlen */
+        body { font-family: theme('fontFamily.sans'); background-color: theme('colors.perse-background'); color: theme('colors.perse-text'); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        h1, h2, h3, h4, h5, h6 { font-family: theme('fontFamily.serif'); font-weight: 700; text-transform: lowercase; color: theme('colors.perse-dark'); }
 
-        /* --- ADJUSTMENT 1: Headings DRAMATISCH vergroot --- */
-        h1 { font-weight: 700; }
-        h2 {
-           font-size: 5rem; /* 80px - Extreem groot */
-           line-height: 1.05;
-           margin-bottom: 1em;
-           font-weight: 700;
-        }
-        h3 {
-            font-size: 3.75rem; /* 60px - Ook extreem groot */
-            line-height: 1.1;
-            margin-bottom: 0.8em;
-            font-weight: 700;
-        }
+        h1 { font-weight: 700; font-size: 4.5rem; /* 72px */ line-height: 1; } /* Applied base h1 styles */
+        h2 { font-size: 5rem; line-height: 1.05; margin-bottom: 1em; font-weight: 700; } /* Increased mb slightly */
+        h3 { font-size: 3.75rem; line-height: 1.1; margin-bottom: 0.8em; font-weight: 700; }
 
-        @media (max-width: 1024px) { /* Adjusted breakpoint for large headings */
-            h2 { font-size: 4rem; } /* Responsive size H2 */
-            h3 { font-size: 3rem; } /* Responsive size H3 */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3.75rem; }
+            h2 { font-size: 4rem; }
+            h3 { font-size: 3rem; }
         }
         @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
             h2 { font-size: 3rem; }
             h3 { font-size: 2.25rem; }
         }
 
-
-        p { line-height: 1.6em; margin-bottom: 1.25em; font-size: 1rem; } /* Standaard body tekst = 16px */
+        p { line-height: 1.6em; margin-bottom: 1.25em; font-size: 1rem; }
         p:last-child { margin-bottom: 0; }
 
         a { color: theme('colors.perse-primary'); transition: color 0.3s ease; }
         a:hover { color: theme('colors.perse-accent'); }
         h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: theme('colors.perse-accent'); }
 
-
+        /* Gecentraliseerde Knop Stijlen */
         .btn { display: inline-block; padding: 14px 36px; font-weight: 500; font-size: 0.8rem; line-height: 1em; text-transform: uppercase; letter-spacing: 2.5px; border-radius: 2px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; cursor: pointer; }
         .btn-primary { background-color: theme('colors.perse-primary'); color: theme('colors.white'); border-color: theme('colors.perse-primary'); }
         .btn-primary:hover { background-color: theme('colors.perse-accent'); border-color: theme('colors.perse-accent'); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(240, 67, 130, 0.3); color: theme('colors.white'); }
-
         .btn-outline { background-color: theme('colors.white'); color: theme('colors.perse-primary'); border-color: theme('colors.perse-primary'); }
         .btn-outline:hover { background-color: theme('colors.perse-primary'); border-color: theme('colors.perse-primary'); color: theme('colors.white'); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(26, 108, 122, 0.2); }
 
+        /* Gecentraliseerde Header Scroll Stijl */
         #main-header.scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
 
-        .info-card { background-color: theme('colors.white'); border-radius: 8px; padding: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        /* Gecentraliseerde Card Stijlen */
+        .info-card { background-color: theme('colors.white'); border-radius: 8px; padding: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; justify-content: space-between;} /* Added height/flex for consistency */
         .info-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+        .info-card .btn { margin-top: auto; } /* Push button to bottom */
 
-        .img-hover-zoom img { transition: transform 0.4s ease; }
+        /* Gecentraliseerde Image Hover Stijl */
+        .img-hover-zoom img { transition: transform 0.4s ease; display: block; width: 100%; height: 100%; object-fit: cover;} /* Added display/size */
         .img-hover-zoom:hover img { transform: scale(1.05); }
+        .img-hover-zoom { overflow: hidden; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); } /* Added base style */
 
-        /* --- ADJUSTMENT 2: Alternating White/Pink Backgrounds --- */
+
+        /* Gecentraliseerde Utility Classes (DRY) */
+        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+        @media (min-width: 1024px) { .section-padding { padding-top: 7rem; padding-bottom: 7rem; } }
+
+        .container-padding { padding-left: 1rem; padding-right: 1rem; }
+        @media (min-width: 640px) { .container-padding { padding-left: 1.5rem; padding-right: 1.5rem; } }
+        @media (min-width: 1024px) { .container-padding { padding-left: 2rem; padding-right: 2rem; } }
+
+        .centered-prose { text-align: center; max-width: 56rem; /* Adjusted from 3xl */ margin-left: auto; margin-right: auto; }
+        .centered-prose-narrow { text-align: center; max-width: 42rem; /* Adjusted from 3xl */ margin-left: auto; margin-right: auto; }
+
+
+        /* Afwisselende Sectie Achtergronden & Stijlen */
         main > section { transition: background-color 0.3s ease; }
-        /* Odd sections get white background */
         main > section:nth-child(odd) { background-color: theme('colors.white'); color: theme('colors.perse-text'); }
-        /* Even sections get pink background */
         main > section:nth-child(even) { background-color: theme('colors.perse-accent'); color: theme('colors.white');}
 
-        /* Styles for ODD (white background) sections */
+        /* Basis stijlen ODD (wit) secties */
         main > section:nth-child(odd) h2,
         main > section:nth-child(odd) h3 { color: theme('colors.perse-dark'); }
         main > section:nth-child(odd) .info-card h3 { color: theme('colors.perse-dark'); }
@@ -112,26 +119,30 @@
         main > section:nth-child(odd) dl .border-l-2 { border-color: theme('colors.perse-accent'); }
 
 
-        /* Styles for EVEN (pink background) sections */
+        /* Basis stijlen EVEN (roze) secties */
         main > section:nth-child(even) h2,
-        main > section:nth-child(even) h3 { color: theme('colors.white'); } /* White headings */
-        main > section:nth-child(even) .info-card h3 { color: theme('colors.white'); } /* White headings in cards */
-        main > section:nth-child(even) p { color: theme('colors.white');} /* White paragraphs */
+        main > section:nth-child(even) h3 { color: theme('colors.white'); }
+        main > section:nth-child(even) .info-card h3 { color: theme('colors.white'); }
+        main > section:nth-child(even) p { color: theme('colors.white');}
         main > section:nth-child(even) .text-perse-secondary { color: theme('colors.white'); }
-        main > section:nth-child(even) .text-gray-600 { color: rgba(255, 255, 255, 0.8); } /* Lighter secondary text */
-        main > section:nth-child(even) dl dd { color: rgba(255, 255, 255, 0.9); } /* Lighter list details */
-        main > section:nth-child(even) .btn-outline { background-color: theme('colors.perse-accent'); color: theme('colors.white'); border-color: theme('colors.white'); } /* White outline button */
+        main > section:nth-child(even) .text-gray-600 { color: rgba(255, 255, 255, 0.8); }
+        main > section:nth-child(even) dl dt { color: theme('colors.white');} /* Make dt white too */
+        main > section:nth-child(even) dl dd { color: rgba(255, 255, 255, 0.9); }
+        main > section:nth-child(even) .btn-outline { background-color: theme('colors.perse-accent'); color: theme('colors.white'); border-color: theme('colors.white'); }
         main > section:nth-child(even) .btn-outline:hover { background-color: theme('colors.white'); color: theme('colors.perse-accent'); border-color: theme('colors.white'); }
-        main > section:nth-child(even) a { color: theme('colors.white'); text-decoration: underline; } /* White, underlined links */
+        main > section:nth-child(even) a { color: theme('colors.white'); text-decoration: underline; }
         main > section:nth-child(even) a:hover { color: theme('colors.white'); opacity: 0.8; }
-        main > section:nth-child(even) .info-card { background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: none; } /* Translucent cards on pink */
+        main > section:nth-child(even) .info-card { background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: none; }
         main > section:nth-child(even) .info-card p { color: rgba(255, 255, 255, 0.9);}
-        main > section:nth-child(even) blockquote { border-color: theme('colors.white'); } /* White border */
-        main > section:nth-child(even) dl .border-l-2 { border-color: theme('colors.white'); } /* White border */
+        main > section:nth-child(even) blockquote { border-color: theme('colors.white'); }
+        main > section:nth-child(even) dl .border-l-2 { border-color: theme('colors.white'); }
 
-        /* Keep Hero and Footer separate & ensure white text */
+        /* Specifieke overrides (indien nodig, nu niet gebruikt) */
+        /* #dispuut-intro { background-color: theme('colors.white') !important; ... } */
+
+        /* Hero & Footer specifieke stijlen */
         #hero { background-color: transparent !important; }
-        #hero h1, #hero p { color: theme('colors.white') !important; }
+        #hero h1, #hero p { color: theme('colors.white') !important; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75); }
         footer { background-color: theme('colors.perse-accent') !important; color: theme('colors.white') !important; }
         footer p, footer a { color: theme('colors.white') !important; }
 
@@ -143,7 +154,7 @@
 <body class="antialiased" x-data="{ isMobileMenuOpen: false }" @keydown.escape.window="isMobileMenuOpen = false">
 
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto container-padding">
             <div class="flex justify-between items-center py-3 md:py-2">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#"><span class="sr-only">Perseverantia</span><img class="h-16 w-auto sm:h-20 transition-transform duration-300 hover:scale-105" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo"></a>
@@ -205,8 +216,8 @@
             </div>
         </section>
 
-        <section id="dispuut-intro" class="py-20 lg:py-28">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center" data-aos="fade-up">
+        <section id="dispuut-intro" class="section-padding">
+             <div class="container mx-auto container-padding centered-prose-narrow" data-aos="fade-up">
                 <h2 class="italic"><i>Het Dispuut</i></h2>
                 <p class="text-lg">
                     Welkom op de website van het prachtige herendispuut A.H.D. Perseverantia. Opgericht om studentikoziteit aan te wakkeren bij C.S.V. Ichthus Eindhoven, pogen wij daarnaast ook te groeien in persoonlijke ontwikkeling van hoffelijkheid, eloquentie en geloof. Sinds 20 oktober 2011 zetten wij ons in voor Ichthus, Perseverantia en alle leden. Dit jaar onder het jaarthema “Amici usque ad aras” weten wij ons verbonden en zetten we ons in voor dispuut en vereniging. Hierbij doorbreken wij onze grenzen net als onze beschermheer Hannibal en met zijn doorzettingsvermogen drinken we tezamen onder ons devies:
@@ -224,10 +235,10 @@
             </div>
         </section>
 
-        <section class="py-20 lg:py-28 overflow-hidden">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="section-padding overflow-hidden">
+            <div class="container mx-auto container-padding">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-                    <div class="md:col-span-2 text-center md:text-left img-hover-zoom overflow-hidden rounded-lg shadow-lg" data-aos="fade-right" data-aos-duration="800">
+                    <div class="md:col-span-2 text-center md:text-left img-hover-zoom" data-aos="fade-right" data-aos-duration="800">
                         <img loading="lazy" class="mx-auto object-contain max-h-[500px]" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/hannibal-832x1024.png" alt="Hannibal Barca">
                     </div>
                     <div class="md:col-span-3" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
@@ -240,9 +251,9 @@
             </div>
         </section>
 
-        <section class="py-20 lg:py-28">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                 <div class="text-center mb-16" data-aos="fade-up">
+        <section class="section-padding">
+            <div class="container mx-auto container-padding">
+                 <div class="centered-prose mb-16" data-aos="fade-up">
                      <h2 class="italic">onze mensen</h2>
                  </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -265,8 +276,8 @@
              </div>
         </section>
 
-        <section class="py-20 lg:py-28 overflow-hidden">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="section-padding overflow-hidden">
+            <div class="container mx-auto container-padding">
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                      <div class="md:order-2 text-center" data-aos="zoom-in" data-aos-duration="700">
                          <img class="mx-auto max-h-96 drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen">
@@ -288,17 +299,17 @@
             </div>
         </section>
 
-        <section class="py-20 lg:py-28">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section class="section-padding">
+             <div class="container mx-auto container-padding text-center">
                  <div data-aos="fade-up">
                      <h2 class="italic"><i>Foto's</i></h2>
-                     <p class="max-w-3xl mx-auto text-lg mb-16">Ervaar het dispuut door middel van het bekijken van deze illustere foto’s en laat u meenemen door deze prachtige mannen op een reis waar genot voor uw ogen centraal staat.</p>
+                     <p class="centered-prose-narrow text-lg mb-16">Ervaar het dispuut door middel van het bekijken van deze illustere foto’s en laat u meenemen door deze prachtige mannen op een reis waar genot voor uw ogen centraal staat.</p>
                  </div>
                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-1024x684.jpg" alt="Gala"> </div>
-                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-1024x683.jpg" alt="Openingsfeest"> </div>
-                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-1024x884.jpg" alt="HEFT 2023"> </div>
-                     <div class="img-hover-zoom overflow-hidden rounded-lg shadow-md aspect-w-3 aspect-h-2" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300"> <img loading="lazy" class="w-full h-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-1024x768.jpg" alt="Audumla"> </div>
+                     <div class="img-hover-zoom" data-aos="zoom-in" data-aos-duration="500"> <img loading="lazy" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-1024x684.jpg" alt="Gala"> </div>
+                     <div class="img-hover-zoom" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100"> <img loading="lazy" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-1024x683.jpg" alt="Openingsfeest"> </div>
+                     <div class="img-hover-zoom" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200"> <img loading="lazy" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-1024x884.jpg" alt="HEFT 2023"> </div>
+                     <div class="img-hover-zoom" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300"> <img loading="lazy" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-1024x768.jpg" alt="Audumla"> </div>
                  </div>
                  <div data-aos="fade-up">
                      <a href="https://ahdperseverantia.nl/fotos/" target="_blank" class="btn btn-primary">Bekijk meer foto's</a>
@@ -306,10 +317,10 @@
              </div>
          </section>
 
-        <section class="py-20 lg:py-28 overflow-hidden">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="section-padding overflow-hidden">
+             <div class="container mx-auto container-padding">
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                     <div class="md:order-2 text-center md:text-right img-hover-zoom overflow-hidden rounded-lg" data-aos="fade-left" data-aos-duration="800">
+                     <div class="md:order-2 text-center md:text-right img-hover-zoom" data-aos="fade-left" data-aos-duration="800">
                          <img loading="lazy" class="mx-auto md:ml-auto max-h-96 w-auto object-contain drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/bezocht-1024x1024.png" alt="Bezochte landen kaart">
                      </div>
                      <div class="md:order-1" data-aos="fade-right" data-aos-duration="800">
@@ -320,15 +331,15 @@
              </div>
          </section>
 
-        <section class="py-20 lg:py-28">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section class="section-padding">
+            <div class="container mx-auto container-padding text-center">
                 <div data-aos="fade-up">
                     <h2 class="italic"><i>Whisky</i></h2>
-                    <p class="max-w-3xl mx-auto text-lg mb-12">Als studenten is het niet meer dan normaal om te genieten van een goudgele rakker, er is echter een drank die het dispuut nog dichter bij elkaar krijgt: whisky.</p>
+                    <p class="centered-prose-narrow text-lg mb-12">Als studenten is het niet meer dan normaal om te genieten van een goudgele rakker, er is echter een drank die het dispuut nog dichter bij elkaar krijgt: whisky.</p>
                 </div>
                 <div class="flex flex-col items-center mb-12" data-aos="zoom-in-up" data-aos-duration="700">
-                    <div class="img-hover-zoom overflow-hidden rounded-lg shadow-lg mb-6 max-w-[250px]">
-                        <img loading="lazy" class="w-full object-cover" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
+                    <div class="img-hover-zoom mb-6 max-w-[250px]">
+                        <img loading="lazy" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
                     </div>
                     <h3 class="italic font-semibold text-white">Over de whisky van de afgelopen DV:</h3>
                     <p class="text-base text-gray-200">(Glengoyne 15 Year Old)</p>
@@ -339,9 +350,9 @@
             </div>
         </section>
 
-        <section id="contact" class="py-20 lg:py-28">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center" data-aos="fade-up">
-                <h2 class="italic text-perse-secondary"><i>Contact</i></h2>
+        <section id="contact" class="section-padding">
+             <div class="container mx-auto container-padding centered-prose-narrow" data-aos="fade-up">
+                <h2 class="italic"><i>Contact</i></h2>
                 <p class="text-lg">Uit gestalkt? Indien u met ons wilt borrelen, u graag met ons naar een gala gaat of een ander voorstel heeft neem dan contact op met de Ab Actis. Voor alle overige zaken kunt u ook contact opnemen met de Ab Actis, hij luistert graag naar uw complexe verhaal.</p>
                 <div class="mt-8 text-lg">
                      <p>Met vriendelijke groet,</p>
@@ -354,7 +365,7 @@
     </main>
 
     <footer class="bg-perse-accent text-white py-8 mt-20">
-         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="container mx-auto container-padding">
              <div class="flex flex-col items-center text-center">
                  <div class="mb-4" data-aos="fade-in" data-aos-delay="100">
                      <p class="text-sm font-medium">Copyright © 2025 Perseverantia | Powered by Perseverantia</p>
