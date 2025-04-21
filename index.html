@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H.D. Perseverantia - Verbeterde Mockup</title>
+    <title>A.H.D. Perseverantia - Mockup v3</title>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,41 +14,66 @@
     <meta name="msapplication-TileImage" content="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-favicon-1-270x270.png">
 
     <style>
-        /* Custom styles om fonts en basiskleuren in te stellen */
         body {
             font-family: 'IBM Plex Sans', sans-serif;
-            color: #3a3a3a; /* Equivalent --ast-global-color-3 */
-            background-color: #f3f9fb; /* Equivalent --ast-global-color-4 */
+            color: #3a3a3a; /* pers-text */
+            background-color: #f3f9fb; /* pers-bg-light */
         }
-        /* Apply EB Garamond, italic, lowercase to headings */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'EB Garamond', serif;
             font-weight: 600;
-            font-style: italic; /* Added for original feel */
-            text-transform: lowercase; /* Behoud van originele stijl */
-            color: #000f2b; /* Equivalent --ast-global-color-2 */
+            font-style: italic;
+            text-transform: lowercase;
+            color: #000f2b; /* pers-dark-blue */
         }
-        /* Specific styles for Hero text */
         .hero-text-shadow {
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
         }
-        /* Tailwind Config for colors (optional, useful for clarity) */
+        /* Definieer kleuren voor Tailwind hier indien nodig */
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         'pers-pink': '#f04382',
-                        'pers-light-teal': '#1a6c7a', /* color-0 */
-                        'pers-dark-teal': '#153243',  /* color-1 */
-                        'pers-dark-blue': '#000f2b', /* color-2 */
-                        'pers-text': '#3a3a3a',      /* color-3 */
-                        'pers-bg-light': '#f3f9fb',  /* color-4 */
-                        'pers-white': '#ffffff',     /* color-5 */
+                        'pers-light-teal': '#1a6c7a',
+                        'pers-dark-teal': '#153243',
+                        'pers-dark-blue': '#000f2b',
+                        'pers-text': '#3a3a3a',
+                        'pers-bg-light': '#f3f9fb',
+                        'pers-white': '#ffffff',
                     },
                     fontFamily: {
                         sans: ['IBM Plex Sans', 'sans-serif'],
                         serif: ['EB Garamond', 'serif'],
-                    }
+                    },
+                    // Extend prose for better readability if needed
+                    typography: (theme) => ({
+                         DEFAULT: {
+                             css: {
+                                 color: theme('colors.pers-text'),
+                                 lineHeight: '1.7', // Adjust line-height
+                                 a: {
+                                     color: theme('colors.pers-light-teal'),
+                                     '&:hover': {
+                                         color: theme('colors.pers-dark-teal'),
+                                     },
+                                 },
+                                // Overrides voor headings binnen prose indien nodig
+                                 'h1, h2, h3, h4, h5, h6': {
+                                     color: theme('colors.pers-dark-blue'),
+                                     fontFamily: theme('fontFamily.serif').join(', '),
+                                     fontStyle: 'italic',
+                                     textTransform: 'lowercase',
+                                 },
+                             },
+                         },
+                         lg: { // Specificaties voor prose-lg
+                            css: {
+                                fontSize: theme('fontSize.lg'),
+                                lineHeight: '1.75',
+                             }
+                         }
+                     }),
                 }
             }
         }
@@ -56,7 +81,7 @@
 </head>
 <body class="antialiased">
 
-    <header class="bg-pers-white shadow-sm sticky top-0 z-50">
+    <header class="bg-pers-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
@@ -64,33 +89,26 @@
                         <img class="h-16 w-auto" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/cropped-wapen_zonder_tekst-160x239.png" alt="Perseverantia Logo">
                     </a>
                 </div>
-
                 <nav class="hidden md:flex space-x-6">
-                    <a href="#dispuut" class="text-pers-text hover:text-pers-light-teal font-medium">Het Dispuut</a>
-                    <a href="https://ahdperseverantia.nl/leden/" class="text-pers-text hover:text-pers-light-teal font-medium">Leden</a>
-                    <a href="https://ahdperseverantia.nl/novieten/" class="text-pers-text hover:text-pers-light-teal font-medium">Novieten</a>
-                    <a href="https://ahdperseverantia.nl/fotos/" class="text-pers-text hover:text-pers-light-teal font-medium">Foto’s</a>
-                     <a href="https://ahdperseverantia.nl/oudleden/" class="text-pers-text hover:text-pers-light-teal font-medium">Oudleden</a>
-                    <a href="#contact-sectie" class="text-pers-text hover:text-pers-light-teal font-medium">Contact</a>
+                    <a href="#dispuut" class="text-pers-text hover:text-pers-light-teal font-medium transition duration-200">Het Dispuut</a>
+                    <a href="https://ahdperseverantia.nl/leden/" class="text-pers-text hover:text-pers-light-teal font-medium transition duration-200">Leden</a>
+                    <a href="https://ahdperseverantia.nl/novieten/" class="text-pers-text hover:text-pers-light-teal font-medium transition duration-200">Novieten</a>
+                    <a href="https://ahdperseverantia.nl/fotos/" class="text-pers-text hover:text-pers-light-teal font-medium transition duration-200">Foto’s</a>
+                     <a href="https://ahdperseverantia.nl/oudleden/" class="text-pers-text hover:text-pers-light-teal font-medium transition duration-200">Oudleden</a>
+                    <a href="#contact-sectie" class="text-pers-text hover:text-pers-light-teal font-medium transition duration-200">Contact</a>
                 </nav>
-
                 <div class="md:hidden">
                     <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-pers-white bg-pers-light-teal hover:bg-pers-dark-teal focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
             </div>
         </div>
-
         <div class="md:hidden hidden" id="mobile-menu">
-             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-pers-white shadow-lg">
-                <a href="#dispuut" class="block px-3 py-2 rounded-md text-base font-medium text-pers-text hover:bg-pers-bg-light">Het Dispuut</a>
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-pers-white shadow-lg border-t border-gray-200">
+                 <a href="#dispuut" class="block px-3 py-2 rounded-md text-base font-medium text-pers-text hover:bg-pers-bg-light">Het Dispuut</a>
                 <a href="https://ahdperseverantia.nl/leden/" class="block px-3 py-2 rounded-md text-base font-medium text-pers-text hover:bg-pers-bg-light">Leden</a>
                 <a href="https://ahdperseverantia.nl/novieten/" class="block px-3 py-2 rounded-md text-base font-medium text-pers-text hover:bg-pers-bg-light">Novieten</a>
                 <a href="https://ahdperseverantia.nl/fotos/" class="block px-3 py-2 rounded-md text-base font-medium text-pers-text hover:bg-pers-bg-light">Foto’s</a>
@@ -101,176 +119,179 @@
     </header>
 
     <main>
-        <section class="relative bg-cover bg-center min-h-[80vh] md:min-h-screen flex items-center justify-center text-center px-4" style="background-image: url('https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg');">
-            <div class="absolute inset-0 bg-black/40 z-0"></div>
-
-            <div class="relative z-10 flex flex-col items-center text-pers-white pt-20">
-                <img fetchpriority="high" decoding="async" class="h-52 md:h-72 w-auto mb-6" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Perseverantia Wapen">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold font-serif hero-text-shadow mb-10">a.h.d. perseverantia</h1>
-                <a href="#dispuut" class="absolute bottom-10 text-pers-white hover:text-gray-200 transition duration-300" aria-label="Scroll naar Het Dispuut">
+        <section class="relative bg-cover bg-center min-h-[80vh] flex items-center justify-center text-center px-4" style="background-image: url('https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg');">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50 z-0"></div>
+            <div class="relative z-10 flex flex-col items-center text-pers-white pt-16">
+                <img fetchpriority="high" decoding="async" class="h-48 md:h-64 w-auto mb-6 drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Perseverantia Wapen">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold font-serif hero-text-shadow mb-10 !not-italic">a.h.d. perseverantia</h1> <a href="#dispuut" class="absolute bottom-8 text-pers-white hover:text-gray-200 transition duration-300" aria-label="Scroll naar Het Dispuut">
                     <svg class="w-10 h-10 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </a>
             </div>
         </section>
 
         <section id="dispuut" class="py-16 md:py-24 px-4 bg-pers-white">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-semibold mb-8">het dispuut</h2>
-                <div class="prose prose-lg max-w-none text-left mx-auto text-pers-text">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-center">het dispuut</h2>
+                <hr class="border-t-2 border-pers-pink w-20 mx-auto mb-12">
+                <article class="prose prose-lg max-w-none mx-auto">
                     <p>Welkom op de website van het prachtige herendispuut A.H.D. Perseverantia. Opgericht om studentikoziteit aan te wakkeren bij C.S.V. Ichthus Eindhoven, pogen wij daarnaast ook te groeien in persoonlijke ontwikkeling van hoffelijkheid, eloquentie en geloof. Sinds 20 oktober 2011 zetten wij ons in voor Ichthus, Perseverantia en alle leden.</p>
                     <p>Dit jaar onder het jaarthema <i>“amici usque ad aras”</i> weten wij ons verbonden en zetten we ons in voor dispuut en vereniging. Hierbij doorbreken wij onze grenzen net als onze beschermheer Hannibal en met zijn doorzettingsvermogen drinken we tezamen onder ons devies:</p>
-                    <p class="text-center text-2xl font-serif italic text-pers-light-teal my-8">“unus pro omnibus, omnes pro uno”</p>
+                    <blockquote class="text-center text-xl md:text-2xl font-serif italic text-pers-dark-teal my-10 p-4 border-l-4 border-pers-pink bg-pers-bg-light/60 rounded-r-lg not-prose">
+                        “unus pro omnibus, omnes pro uno”
+                    </blockquote>
                     <p class="text-center text-lg my-6 text-pers-dark-blue">~</p>
                     <p class="text-center italic">T.J.J. van Dieren<br>Praeses der A.H.D. Perseverantia</p>
-                </div>
+                </article>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 px-4 bg-pers-bg-light">
+        <section class="py-16 md:py-24 px-4 bg-pers-bg-light border-t border-gray-200">
             <div class="max-w-5xl mx-auto md:flex items-center gap-12">
-                <div class="md:w-1/3 flex-shrink-0">
-                    <img decoding="async" class="rounded-lg shadow-lg mx-auto w-full max-w-xs md:max-w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/hannibal-832x1024.png" alt="Hannibal Barca">
+                 <div class="md:w-1/3 flex-shrink-0">
+                    <img decoding="async" class="rounded-lg shadow-xl mx-auto w-full max-w-xs md:max-w-sm transform transition duration-500 hover:scale-105" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/hannibal-832x1024.png" alt="Hannibal Barca">
                 </div>
                 <div class="md:w-2/3 mt-8 md:mt-0">
                     <h2 class="text-3xl md:text-4xl font-semibold mb-6">hannibal barca</h2>
-                    <div class="prose prose-lg max-w-none text-pers-text">
+                    <article class="prose prose-lg max-w-none">
                         <p>Een van de meest gevreesde generaals in de geschiedenis van de mensheid. Door wilskracht en doorzettingsvermogen lukte het hem om een leger met olifanten over de Alpen te laten trekken om te proberen de grootmacht van het Romeinse rijk te gronde te richten. Zijn geniale tactiek leverde hem ongeëvenaarde bewondering op van velen. Deze heer heeft het gewaagd om een legendarische veldtocht te maken waarvan niemand dacht dat het mogelijk was.</p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="leden-sectie" class="py-16 md:py-24 px-4 bg-pers-white">
-             <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
-                <div class="text-center md:text-left">
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-4">de leden</h2>
-                    <p class="mb-6 leading-relaxed text-pers-text">Een dispuut wordt voornamelijk gevormd door de studerende leden. Student zijn is vanzelfsprekend meer dan alleen studeren. Ieder lid bij het dispuut is divers, het levensdoel is echter voor iedereen gelijk: streven naar hechte vriendschappen en fabelachtige studentikoziteit.</p>
-                    <a href="https://ahdperseverantia.nl/leden/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
-                        Maak kennis met de Leden
+        <section id="leden-sectie" class="py-16 md:py-24 px-4 bg-pers-white border-t border-gray-200">
+             <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+                 <div class="text-center md:text-left p-6 rounded-lg hover:bg-pers-bg-light/60 transition duration-300">
+                    <h3 class="text-2xl md:text-3xl font-semibold mb-4">de leden</h3>
+                    <p class="mb-6 leading-relaxed text-pers-text">Een dispuut wordt voornamelijk gevormd door de studerende leden. Student zijn is meer dan alleen studeren. Ieder lid is divers, het levensdoel is echter gelijk: streven naar hechte vriendschappen en fabelachtige studentikoziteit.</p>
+                     <a href="https://ahdperseverantia.nl/leden/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
+                        Maak kennis
                     </a>
                 </div>
-                <div class="text-center md:text-left">
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-4">de novieten</h2>
-                    <p class="mb-6 leading-relaxed text-pers-text">Ieder jaar ontvangt het dispuut nieuw bloed en omarmt zij deze knapen om ze te vormen tot decadente heren. Dit jaar zijn er vier jonge knapen die het novietenschap op zich hebben genomen om zichzelf ooit een Perseverantiaan te mogen noemen.</p>
+                <div class="text-center md:text-left p-6 rounded-lg hover:bg-pers-bg-light/60 transition duration-300">
+                    <h3 class="text-2xl md:text-3xl font-semibold mb-4">de novieten</h3>
+                    <p class="mb-6 leading-relaxed text-pers-text">Ieder jaar ontvangt het dispuut nieuw bloed en omarmt zij deze knapen om ze te vormen tot decadente heren. Dit jaar zijn er vier jonge knapen die het novietenschap hebben opgenomen om Perseverantiaan te mogen worden.</p>
                     <a href="https://ahdperseverantia.nl/novieten/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
-                        De novieten stellen zich voor
+                        Stellen zich voor
                     </a>
                 </div>
-                <div class="text-center md:text-left">
-                     <h2 class="text-2xl md:text-3xl font-semibold mb-4">de oud-leden</h2>
-                    <p class="mb-6 leading-relaxed text-pers-text">Dat het dispuut relatief jong is heeft als voordeel dat de genesis van de oprichting nog vers in onze hoofden zit. Op dit moment zijn er 25 oud-leden die allemaal worden gewaardeerd voor de bijdrage die ze persoonlijk hebben geleverd aan het dispuut. Perseverantiaan blijft men voor het leven.</p>
+                <div class="text-center md:text-left p-6 rounded-lg hover:bg-pers-bg-light/60 transition duration-300">
+                     <h3 class="text-2xl md:text-3xl font-semibold mb-4">de oud-leden</h3>
+                    <p class="mb-6 leading-relaxed text-pers-text">De genesis van de oprichting zit nog vers in onze hoofden. De 25 oud-leden worden gewaardeerd voor hun bijdrage. Hoewel ieders studententijd ophoudt, blijft men Perseverantiaan voor het leven.</p>
                      <a href="https://ahdperseverantia.nl/oudleden/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
-                        Bekijk het nalatenschap
+                        Bekijk nalatenschap
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 px-4 bg-pers-bg-light">
+        <section class="py-16 md:py-24 px-4 bg-pers-bg-light border-t border-gray-200">
             <div class="max-w-5xl mx-auto md:flex items-center gap-12">
-                <div class="md:w-1/3 flex justify-center flex-shrink-0 mb-8 md:mb-0">
-                     <img decoding="async" class="h-52 md:h-64 w-auto" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Perseverantia Wapen Klein">
+                 <div class="md:w-1/3 flex justify-center flex-shrink-0 mb-8 md:mb-0">
+                     <img decoding="async" class="h-52 md:h-64 w-auto drop-shadow-md" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Perseverantia Wapen Klein">
                 </div>
-                <div class="md:w-2/3">
+                 <div class="md:w-2/3">
                      <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-center md:text-left">essentialia</h2>
-                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-lg text-pers-text">
-                         <p><strong class="font-semibold text-pers-dark-blue">Opgericht:</strong> 20 oktober 2011</p>
-                         <p><strong class="font-semibold text-pers-dark-blue">Erkend:</strong> 26 april 2012</p>
-                         <p><strong class="font-semibold text-pers-dark-blue">Kleuren:</strong> Roze en blauw</p>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-lg text-pers-text">
+                         <p><strong class="font-semibold text-pers-dark-blue">Opgericht:</strong> 20 okt 2011</p>
+                         <p><strong class="font-semibold text-pers-dark-blue">Erkend:</strong> 26 apr 2012</p>
+                         <p><strong class="font-semibold text-pers-dark-blue">Kleuren:</strong> Roze & Blauw</p>
                          <p><strong class="font-semibold text-pers-dark-blue">Leden:</strong> 11</p>
-                         <p><strong class="font-semibold text-pers-dark-blue">Devies:</strong> ‘Unus pro omnibus, omnes pro uno’</p>
+                         <p><strong class="font-semibold text-pers-dark-blue">Devies:</strong> Unus pro omnibus...</p>
                          <p><strong class="font-semibold text-pers-dark-blue">Novieten:</strong> 0</p>
                          <p><strong class="font-semibold text-pers-dark-blue">Beschermheer:</strong> Hannibal Barca</p>
                          <p><strong class="font-semibold text-pers-dark-blue">Oud leden:</strong> 25</p>
                      </div>
-                </div>
+                 </div>
             </div>
         </section>
 
-        <section id="fotos-sectie" class="py-16 md:py-24 px-4 bg-pers-white">
+        <section id="fotos-sectie" class="py-16 md:py-24 px-4 bg-pers-white border-t border-gray-200">
              <div class="max-w-6xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-semibold mb-4">foto's</h2>
-                <p class="max-w-3xl mx-auto mb-10 leading-relaxed text-lg text-pers-text">Ervaar het dispuut door middel van het bekijken van deze illustere foto’s en laat u meenemen door deze prachtige mannen op een reis waar genot voor uw ogen centraal staat.</p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-                     <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105">
-                        <img loading="lazy" decoding="async" class="object-cover h-48 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-1024x684.jpg" alt="Gala foto">
+                <hr class="border-t-2 border-pers-pink w-20 mx-auto mb-10">
+                 <p class="max-w-3xl mx-auto mb-12 leading-relaxed text-lg text-pers-text">Ervaar het dispuut door middel van het bekijken van deze illustere foto’s en laat u meenemen door deze prachtige mannen op een reis waar genot voor uw ogen centraal staat.</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                     <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pers-pink focus:ring-offset-2">
+                        <img loading="lazy" decoding="async" class="object-cover h-52 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/gala-1024x684.jpg" alt="Gala foto">
                     </a>
-                    <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105">
-                        <img loading="lazy" decoding="async" class="object-cover h-48 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-1024x683.jpg" alt="Openingsfeest foto">
+                     <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pers-pink focus:ring-offset-2">
+                        <img loading="lazy" decoding="async" class="object-cover h-52 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/openingsfeest-048-copy-1024x683.jpg" alt="Openingsfeest foto">
                     </a>
-                    <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105">
-                        <img loading="lazy" decoding="async" class="object-cover h-48 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-1024x884.jpg" alt="HEFT foto">
+                     <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pers-pink focus:ring-offset-2">
+                        <img loading="lazy" decoding="async" class="object-cover h-52 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-1024x884.jpg" alt="HEFT foto">
                     </a>
-                     <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105">
-                        <img loading="lazy" decoding="async" class="object-cover h-48 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-1024x768.jpg" alt="Audumla foto">
+                     <a href="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-scaled.jpg" target="_blank" class="block overflow-hidden rounded-lg shadow-lg group transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pers-pink focus:ring-offset-2">
+                        <img loading="lazy" decoding="async" class="object-cover h-52 w-full" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/056_audumla-1024x768.jpg" alt="Audumla foto">
                     </a>
                 </div>
-                 <a href="https://ahdperseverantia.nl/fotos/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
+                 <a href="https://ahdperseverantia.nl/fotos/" class="inline-block bg-pers-light-teal text-white px-8 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
                     Bekijk meer foto's
                 </a>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 px-4 bg-pers-bg-light">
+        <section class="py-16 md:py-24 px-4 bg-pers-bg-light border-t border-gray-200">
              <div class="max-w-5xl mx-auto md:flex items-center gap-12">
                  <div class="md:w-1/3 flex justify-center flex-shrink-0 mb-8 md:mb-0">
-                     <img loading="lazy" decoding="async" class="rounded-lg shadow-md h-60 w-60 md:h-72 md:w-72 object-contain" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/bezocht-1024x1024.png" alt="Bezochte landen kaart">
+                    <img loading="lazy" decoding="async" class="rounded-lg shadow-lg h-64 w-64 md:h-72 md:w-72 object-contain p-2 bg-white" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/bezocht-1024x1024.png" alt="Bezochte landen kaart">
                  </div>
-                <div class="md:w-2/3">
-                    <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-center md:text-left">veldtochten</h2>
-                    <div class="prose prose-lg max-w-none text-pers-text">
-                       <p>Hannibal trok over de Alpen, wij maken wel meerdere tochten. Diverse momenten in het jaar wordt een stad of plaats bezocht door deze groep stampende olifanten, pronkende met de kleur roze. De in blauw gemarkeerde landen hebben al van de aanwezigheid van het dispuut mogen genieten.</p>
-                    </div>
-                </div>
+                 <div class="md:w-2/3">
+                     <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-center md:text-left">veldtochten</h2>
+                     <article class="prose prose-lg max-w-none">
+                        <p>Hannibal trok over de Alpen, wij maken wel meerdere tochten. Diverse momenten in het jaar wordt een stad of plaats bezocht door deze groep stampende olifanten, pronkende met de kleur roze. De in blauw gemarkeerde landen hebben al van de aanwezigheid van het dispuut mogen genieten.</p>
+                    </article>
+                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 px-4 bg-pers-white">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-semibold mb-4">whisky</h2>
-                <p class="mb-10 leading-relaxed text-lg text-pers-text">Als studenten is het niet meer dan normaal om te genieten van een goudgele rakker, er is echter een drank die het dispuut nog dichter bij elkaar krijgt: whisky.</p>
-                 <div class="flex flex-col sm:flex-row items-center text-left gap-6 mb-10 max-w-2xl mx-auto bg-pers-bg-light p-6 rounded-lg shadow-lg border border-gray-200">
-                     <img loading="lazy" decoding="async" class="w-28 h-auto sm:w-32 object-contain flex-shrink-0" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
-                     <div class="flex-grow">
-                         <h3 class="text-xl font-semibold font-serif mb-2 !italic !lowercase">over de whisky van de afgelopen dv:</h3>
-                         <p class="text-pers-text text-sm sm:text-base"><i>Glengoyne 15 Year Old</i> - een voorbeeld van de verfijnde smaak die binnen het dispuut gewaardeerd wordt.</p>
-                     </div>
-                 </div>
-                 <a href="https://ahdperseverantia.nl/whisky/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
-                    Whisky tijdlijn
-                </a>
-            </div>
-        </section>
-
-        <section id="contact-sectie" class="py-16 md:py-24 px-4 bg-pers-bg-light">
+        <section class="py-16 md:py-24 px-4 bg-pers-white border-t border-gray-200">
              <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-semibold mb-8">contact</h2>
-                 <div class="prose prose-lg max-w-none mb-10 text-pers-text">
-                    <p>Uit gestalkt? Indien u met ons wilt borrelen, u graag met ons naar een gala gaat of een ander voorstel heeft neem dan contact op met de Ab Actis. Voor alle overige zaken kunt u ook contact opnemen met de Ab Actis, hij luistert graag naar uw complexe verhaal.</p>
-                    <p class="mt-6">Met vriendelijke groet,</p>
-                    <p class="italic">D.T. Boersma<br>Ab Actis</p>
-                 </div>
-                 <a href="https://ahdperseverantia.nl/contact/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
-                    Neem contact op
-                </a>
-            </div>
-        </section>
+                 <h2 class="text-3xl md:text-4xl font-semibold mb-4">whisky</h2>
+                 <p class="mb-10 leading-relaxed text-lg text-pers-text">Genieten van een goudgele rakker is normaal, maar er is een drank die het dispuut nog dichter bij elkaar krijgt: whisky.</p>
+                  <div class="flex flex-col sm:flex-row items-center text-left gap-6 mb-12 max-w-2xl mx-auto bg-pers-bg-light p-6 rounded-lg shadow-lg border-2 border-pers-pink">
+                      <img loading="lazy" decoding="async" class="w-28 h-auto sm:w-32 object-contain flex-shrink-0" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
+                      <div class="flex-grow">
+                          <h3 class="text-xl font-semibold font-serif mb-2 !italic !lowercase">whisky v/d maand (voorbeeld):</h3>
+                          <p class="text-pers-text text-sm sm:text-base"><i>Glengoyne 15 Year Old</i> - een complexe maar toegankelijke Highland single malt, gerijpt in sherry- en bourbonvaten, symbool voor de gedeelde momenten van genot en gesprek binnen het dispuut.</p>
+                      </div>
+                  </div>
+                  <a href="https://ahdperseverantia.nl/whisky/" class="inline-block bg-pers-light-teal text-white px-8 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
+                     Whisky tijdlijn
+                 </a>
+             </div>
+         </section>
+
+        <section id="contact-sectie" class="py-16 md:py-24 px-4 bg-pers-bg-light border-t border-gray-200">
+              <div class="max-w-3xl mx-auto text-center">
+                 <h2 class="text-3xl md:text-4xl font-semibold mb-8">contact</h2>
+                 <hr class="border-t-2 border-pers-pink w-20 mx-auto mb-12">
+                  <article class="prose prose-lg max-w-none mb-12">
+                     <p>Uit gestalkt? Indien u met ons wilt borrelen, graag naar een gala gaat of een ander voorstel heeft, neem dan contact op met de Ab Actis. Voor alle overige zaken kunt u ook contact opnemen; hij luistert graag naar uw complexe verhaal.</p>
+                     <p class="mt-8">Met vriendelijke groet,</p>
+                     <p class="italic">D.T. Boersma<br>Ab Actis</p>
+                  </article>
+                  <a href="https://ahdperseverantia.nl/contact/" class="inline-block bg-pers-light-teal text-white px-8 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
+                     Neem contact op
+                 </a>
+             </div>
+         </section>
 
     </main>
 
     <footer class="bg-pers-pink py-8 px-4 text-pers-light-teal">
-         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-             <div class="opacity-70 hover:opacity-100 transition-opacity duration-300">
-                 <img loading="lazy" decoding="async" class="h-12 w-auto" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant links">
-            </div>
-            <div class="text-center text-sm font-medium">
-                 <p>Copyright © 2025 Perseverantia | Powered by Perseverantia</p>
-            </div>
-            <div class="opacity-70 hover:opacity-100 transition-opacity duration-300">
-                 <img loading="lazy" decoding="async" class="h-12 w-auto" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant rechts">
+          <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div class="opacity-75 hover:opacity-100 transition-opacity duration-300">
+                  <img loading="lazy" decoding="async" class="h-12 w-auto filter grayscale hover:filter-none transition duration-300" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant links">
              </div>
-        </div>
-    </footer>
+             <div class="text-center text-sm font-medium">
+                  <p>Copyright © 2025 Perseverantia | Powered by Perseverantia</p>
+             </div>
+             <div class="opacity-75 hover:opacity-100 transition-opacity duration-300">
+                  <img loading="lazy" decoding="async" class="h-12 w-auto filter grayscale hover:filter-none transition duration-300" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant rechts">
+              </div>
+         </div>
+     </footer>
 
 </body>
 </html>
