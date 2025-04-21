@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H.D. Perseverantia - Mockup v3</title>
+    <title>A.H.D. Perseverantia - Mockup v4 (Cleaned)</title>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,20 +16,19 @@
     <style>
         body {
             font-family: 'IBM Plex Sans', sans-serif;
-            color: #3a3a3a; /* pers-text */
-            background-color: #f3f9fb; /* pers-bg-light */
+            color: #3a3a3a;
+            background-color: #f3f9fb;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'EB Garamond', serif;
             font-weight: 600;
             font-style: italic;
             text-transform: lowercase;
-            color: #000f2b; /* pers-dark-blue */
+            color: #000f2b;
         }
         .hero-text-shadow {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            /* Removed default, using utility class now */
         }
-        /* Definieer kleuren voor Tailwind hier indien nodig */
         tailwind.config = {
             theme: {
                 extend: {
@@ -46,19 +45,17 @@
                         sans: ['IBM Plex Sans', 'sans-serif'],
                         serif: ['EB Garamond', 'serif'],
                     },
-                    // Extend prose for better readability if needed
                     typography: (theme) => ({
                          DEFAULT: {
                              css: {
                                  color: theme('colors.pers-text'),
-                                 lineHeight: '1.7', // Adjust line-height
+                                 lineHeight: '1.7',
                                  a: {
                                      color: theme('colors.pers-light-teal'),
                                      '&:hover': {
                                          color: theme('colors.pers-dark-teal'),
                                      },
                                  },
-                                // Overrides voor headings binnen prose indien nodig
                                  'h1, h2, h3, h4, h5, h6': {
                                      color: theme('colors.pers-dark-blue'),
                                      fontFamily: theme('fontFamily.serif').join(', '),
@@ -67,7 +64,7 @@
                                  },
                              },
                          },
-                         lg: { // Specificaties voor prose-lg
+                         lg: {
                             css: {
                                 fontSize: theme('fontSize.lg'),
                                 lineHeight: '1.75',
@@ -120,10 +117,12 @@
 
     <main>
         <section class="relative bg-cover bg-center min-h-[80vh] flex items-center justify-center text-center px-4" style="background-image: url('https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50 z-0"></div>
+            <div class="absolute inset-0 bg-black/60 z-0"></div> {/* Darker overlay */}
             <div class="relative z-10 flex flex-col items-center text-pers-white pt-16">
                 <img fetchpriority="high" decoding="async" class="h-48 md:h-64 w-auto mb-6 drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Perseverantia Wapen">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold font-serif hero-text-shadow mb-10 !not-italic">a.h.d. perseverantia</h1> <a href="#dispuut" class="absolute bottom-8 text-pers-white hover:text-gray-200 transition duration-300" aria-label="Scroll naar Het Dispuut">
+                {/* Added stronger text shadow utility */}
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold font-serif !not-italic [text-shadow:1px_1px_5px_rgba(0,0,0,0.9)]">a.h.d. perseverantia</h1>
+                <a href="#dispuut" class="absolute bottom-8 text-pers-white hover:text-gray-200 transition duration-300" aria-label="Scroll naar Het Dispuut">
                     <svg class="w-10 h-10 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </a>
             </div>
@@ -161,7 +160,7 @@
 
         <section id="leden-sectie" class="py-16 md:py-24 px-4 bg-pers-white border-t border-gray-200">
              <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-                 <div class="text-center md:text-left p-6 rounded-lg hover:bg-pers-bg-light/60 transition duration-300">
+                <div class="text-center md:text-left p-6 rounded-lg hover:bg-pers-bg-light/60 transition duration-300">
                     <h3 class="text-2xl md:text-3xl font-semibold mb-4">de leden</h3>
                     <p class="mb-6 leading-relaxed text-pers-text">Een dispuut wordt voornamelijk gevormd door de studerende leden. Student zijn is meer dan alleen studeren. Ieder lid is divers, het levensdoel is echter gelijk: streven naar hechte vriendschappen en fabelachtige studentikoziteit.</p>
                      <a href="https://ahdperseverantia.nl/leden/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
@@ -175,7 +174,7 @@
                         Stellen zich voor
                     </a>
                 </div>
-                <div class="text-center md:text-left p-6 rounded-lg hover:bg-pers-bg-light/60 transition duration-300">
+                 <div class="text-center md:text-left p-6 rounded-lg hover:bg-pers-bg-light/60 transition duration-300">
                      <h3 class="text-2xl md:text-3xl font-semibold mb-4">de oud-leden</h3>
                     <p class="mb-6 leading-relaxed text-pers-text">De genesis van de oprichting zit nog vers in onze hoofden. De 25 oud-leden worden gewaardeerd voor hun bijdrage. Hoewel ieders studententijd ophoudt, blijft men Perseverantiaan voor het leven.</p>
                      <a href="https://ahdperseverantia.nl/oudleden/" class="inline-block bg-pers-light-teal text-white px-6 py-3 rounded-md hover:bg-pers-dark-teal transition duration-300 font-medium uppercase tracking-wider text-sm shadow-md">
@@ -262,7 +261,7 @@
              </div>
          </section>
 
-        <section id="contact-sectie" class="py-16 md:py-24 px-4 bg-pers-bg-light border-t border-gray-200">
+         <section id="contact-sectie" class="py-16 md:py-24 px-4 bg-pers-bg-light border-t border-gray-200">
               <div class="max-w-3xl mx-auto text-center">
                  <h2 class="text-3xl md:text-4xl font-semibold mb-8">contact</h2>
                  <hr class="border-t-2 border-pers-pink w-20 mx-auto mb-12">
@@ -279,7 +278,7 @@
 
     </main>
 
-    <footer class="bg-pers-pink py-8 px-4 text-pers-light-teal">
+    <footer class="bg-pers-pink py-8 px-4 text-pers-light-teal border-t-4 border-pers-dark-teal/30">
           <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div class="opacity-75 hover:opacity-100 transition-opacity duration-300">
                   <img loading="lazy" decoding="async" class="h-12 w-auto filter grayscale hover:filter-none transition duration-300" src="https://ahdperseverantia.nl/wp-content/uploads/2024/09/olifant_grijs-899x1024.png" alt="Olifant links">
