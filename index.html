@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H.D. Perseverantia - Text Color Force Fix</title>
+    <title>A.H.D. Perseverantia - Background Fix</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,17 +88,17 @@
         .centered-prose { text-align: center; max-width: 56rem; margin-left: auto; margin-right: auto; }
         .centered-prose-narrow { text-align: center; max-width: 42rem; margin-left: auto; margin-right: auto; }
 
-        /* Afwisselende Sectie Achtergronden & Stijlen */
+        /* Correct Alternating Section Backgrounds & Styles */
         main > section { transition: background-color 0.3s ease; }
         main > section:nth-child(odd) { background-color: theme('colors.white'); color: theme('colors.perse-text'); }
         main > section:nth-child(even) { background-color: theme('colors.perse-accent'); color: theme('colors.white');}
 
-        /* Stijlen ODD (wit) secties */
+        /* Styles for ODD (white background) sections */
         main > section:nth-child(odd) h2,
         main > section:nth-child(odd) h3 { color: theme('colors.perse-dark'); }
         main > section:nth-child(odd) .info-card h3 { color: theme('colors.perse-dark'); }
-        main > section:nth-child(odd) p { color: theme('colors.perse-text'); } /* Basis p kleur */
-        main > section:nth-child(odd) .info-card p { color: theme('colors.perse-text') !important; } /* FORCEER donkere tekst in info card p */
+        main > section:nth-child(odd) p { color: theme('colors.perse-text'); }
+        main > section:nth-child(odd) .info-card p { color: theme('colors.perse-text'); }
         main > section:nth-child(odd) .text-perse-secondary { color: theme('colors.perse-secondary'); }
         main > section:nth-child(odd) .text-gray-600 { color: theme('colors.gray.600'); }
         main > section:nth-child(odd) dl dd { color: theme('colors.perse-text'); }
@@ -110,7 +110,7 @@
         main > section:nth-child(odd) blockquote { border-color: theme('colors.perse-accent'); }
         main > section:nth-child(odd) dl .border-l-2 { border-color: theme('colors.perse-accent'); }
 
-        /* Stijlen EVEN (roze) secties */
+        /* Styles for EVEN (pink background) sections */
         main > section:nth-child(even) h2,
         main > section:nth-child(even) h3 { color: theme('colors.white'); }
         main > section:nth-child(even) .info-card h3 { color: theme('colors.white'); }
@@ -129,6 +129,7 @@
         main > section:nth-child(even) dl .border-l-2 { border-color: theme('colors.white'); }
 
 
+        /* Hero & Footer specifieke stijlen */
         #hero { background-color: transparent !important; }
         #hero h1, #hero p { color: theme('colors.white') !important; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75); }
         footer { background-color: theme('colors.perse-accent') !important; color: theme('colors.white') !important; }
@@ -184,27 +185,27 @@
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="relative flex flex-col items-center justify-center min-h-screen text-center section-padding overflow-hidden">
-            <div class="absolute inset-0 z-0">
-                 <img src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg" alt="Hero Background" class="w-full h-full object-cover">
-                 <div class="absolute inset-0 bg-black opacity-60"></div>
-            </div>
-            <div class="relative z-10" data-aos="fade-in" data-aos-duration="1200">
-                <img class="max-h-72 sm:max-h-80 md:max-h-96 w-auto mb-8 mx-auto drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen Zonder Tekst">
-                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-7xl font-serif">
-                    A.H.D. Perseverantia
-                </h1>
-                <p class="mt-4 text-xl md:text-2xl text-white font-serif italic">
-                   “Unus pro omnibus, omnes pro uno”
-                </p>
-                <a href="#Dispuut" class="mt-12 inline-block text-white hover:text-perse-accent transition-colors">
-                   <svg class="w-10 h-10 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-               </a>
-            </div>
-        </section>
+    <section id="hero" class="relative flex flex-col items-center justify-center min-h-screen text-center section-padding overflow-hidden">
+        <div class="absolute inset-0 z-0">
+             <img src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/heft2023-125_52844551737_o-scaled.jpg" alt="Hero Background" class="w-full h-full object-cover">
+             <div class="absolute inset-0 bg-black opacity-60"></div>
+        </div>
+        <div class="relative z-10" data-aos="fade-in" data-aos-duration="1200">
+            <img class="max-h-72 sm:max-h-80 md:max-h-96 w-auto mb-8 mx-auto drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/wapen_zonder_tekst-1-686x1024.png" alt="Wapen Zonder Tekst">
+            <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-7xl font-serif">
+                A.H.D. Perseverantia
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-white font-serif italic">
+               “Unus pro omnibus, omnes pro uno”
+            </p>
+            <a href="#Dispuut" class="mt-12 inline-block text-white hover:text-perse-accent transition-colors">
+               <svg class="w-10 h-10 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
+           </a>
+        </div>
+    </section>
 
-        <section id="dispuut-intro" class="section-padding">
+    <main>
+        <section id="Dispuut" class="section-padding"> {/* Odd section (1st in main) -> White BG */}
              <div class="container mx-auto container-padding centered-prose-narrow" data-aos="fade-up">
                 <h2 class="italic"><i>Het Dispuut</i></h2>
                 <p class="text-lg">
@@ -223,7 +224,7 @@
             </div>
         </section>
 
-        <section class="section-padding overflow-hidden">
+        <section class="section-padding overflow-hidden"> {/* Even section (2nd in main) -> Pink BG */}
             <div class="container mx-auto container-padding">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
                     <div class="md:col-span-2 text-center md:text-left img-hover-zoom" data-aos="fade-right" data-aos-duration="800">
@@ -239,7 +240,7 @@
             </div>
         </section>
 
-        <section class="section-padding">
+        <section class="section-padding"> {/* Odd section (3rd in main) -> White BG */}
             <div class="container mx-auto container-padding">
                  <div class="centered-prose mb-16" data-aos="fade-up">
                      <h2 class="italic">onze mensen</h2>
@@ -252,6 +253,7 @@
                      </div>
                     <div class="info-card text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
                          <h3 class="italic font-semibold mb-4"><i>De Novieten</i></h3>
+                         {/* Verified: No text-white class here */}
                          <p class="text-base mb-6">Ieder jaar ontvangt het dispuut nieuw bloed en omarmt zij deze knapen om ze te vormen tot decadente heren. Dit jaar zijn er vier jonge knapen die het novietenschap op zich hebben genomen om zichzelf ooit een Perseverantiaan te mogen noemen.</p>
                          <a href="https://ahdperseverantia.nl/novieten/" target="_blank" class="btn btn-outline">De novieten stellen zich voor</a>
                      </div>
@@ -264,7 +266,7 @@
              </div>
         </section>
 
-        <section class="section-padding overflow-hidden">
+        <section class="section-padding overflow-hidden"> {/* Even section (4th in main) -> Pink BG */}
             <div class="container mx-auto container-padding">
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                      <div class="md:order-2 text-center" data-aos="zoom-in" data-aos-duration="700">
@@ -273,21 +275,21 @@
                      <div class="md:order-1" data-aos="fade-right" data-aos-duration="700">
                          <h2 class="italic text-center md:text-left"><i>Essentialia</i></h2>
                          <dl class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-lg">
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="100"> <dt class="font-semibold text-white">Opgericht:</dt> <dd>20 oktober 2011</dd> </div>
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="150"> <dt class="font-semibold text-white">Erkend:</dt> <dd>26 april 2012</dd> </div>
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="200"> <dt class="font-semibold text-white">Kleuren:</dt> <dd>Roze en blauw</dd> </div>
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="250"> <dt class="font-semibold text-white">Leden:</dt> <dd>11</dd> </div>
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="300"> <dt class="font-semibold text-white">Devies:</dt> <dd class="italic">‘Unus pro omnibus, omnes pro uno’</dd> </div>
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="350"> <dt class="font-semibold text-white">Novieten:</dt> <dd>0</dd> </div>
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="400"> <dt class="font-semibold text-white">Beschermheer:</dt> <dd>Hannibal Barca</dd> </div>
-                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="450"> <dt class="font-semibold text-white">Oud leden:</dt> <dd>25</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="100"> <dt class="font-semibold">Opgericht:</dt> <dd>20 oktober 2011</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="150"> <dt class="font-semibold">Erkend:</dt> <dd>26 april 2012</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="200"> <dt class="font-semibold">Kleuren:</dt> <dd>Roze en blauw</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="250"> <dt class="font-semibold">Leden:</dt> <dd>11</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="300"> <dt class="font-semibold">Devies:</dt> <dd class="italic">‘Unus pro omnibus, omnes pro uno’</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="350"> <dt class="font-semibold">Novieten:</dt> <dd>0</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="400"> <dt class="font-semibold">Beschermheer:</dt> <dd>Hannibal Barca</dd> </div>
+                             <div class="border-l-2 border-white pl-4 py-1" data-aos="fade-right" data-aos-delay="450"> <dt class="font-semibold">Oud leden:</dt> <dd>25</dd> </div>
                          </dl>
                      </div>
                  </div>
             </div>
         </section>
 
-        <section class="section-padding">
+        <section class="section-padding"> {/* Odd section (5th in main) -> White BG */}
              <div class="container mx-auto container-padding text-center">
                  <div data-aos="fade-up">
                      <h2 class="italic"><i>Foto's</i></h2>
@@ -305,11 +307,11 @@
              </div>
          </section>
 
-        <section class="section-padding overflow-hidden">
+        <section class="section-padding overflow-hidden"> {/* Even section (6th in main) -> Pink BG */}
              <div class="container mx-auto container-padding">
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                      <div class="md:order-2 text-center md:text-right img-hover-zoom" data-aos="fade-left" data-aos-duration="800">
-                         <img loading="lazy" class="mx-auto md:ml-auto max-h-96 w-auto object-contain drop-shadow-lg" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/bezocht-1024x1024.png" alt="Bezochte landen kaart">
+                         <img loading="lazy" class="mx-auto md:ml-auto max-h-96 w-auto object-contain drop-shadow-lg filter brightness-90 contrast-125" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/bezocht-1024x1024.png" alt="Bezochte landen kaart">
                      </div>
                      <div class="md:order-1" data-aos="fade-right" data-aos-duration="800">
                          <h2 class="italic"><i>Veldtochten</i></h2>
@@ -319,7 +321,7 @@
              </div>
          </section>
 
-        <section class="section-padding">
+        <section class="section-padding"> {/* Odd section (7th in main) -> White BG */}
             <div class="container mx-auto container-padding text-center">
                 <div data-aos="fade-up">
                     <h2 class="italic"><i>Whisky</i></h2>
@@ -329,25 +331,25 @@
                     <div class="img-hover-zoom mb-6 max-w-[250px]">
                         <img loading="lazy" src="https://ahdperseverantia.nl/wp-content/uploads/2024/08/glengoyne-15.jpg" alt="Glengoyne 15 Whisky">
                     </div>
-                    <h3 class="italic font-semibold text-white">Over de whisky van de afgelopen DV:</h3>
-                    <p class="text-base text-gray-200">(Glengoyne 15 Year Old)</p>
+                    <h3 class="italic font-semibold text-perse-secondary">Over de whisky van de afgelopen DV:</h3>
+                    <p class="text-base text-gray-600">(Glengoyne 15 Year Old)</p>
                 </div>
                 <div data-aos="fade-up">
-                    <a href="https://ahdperseverantia.nl/whisky/" class="btn btn-outline">Whisky tijdlijn</a>
+                    <a href="https://ahdperseverantia.nl/whisky/" class="btn btn-primary">Whisky tijdlijn</a>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section-padding">
+        <section id="contact" class="section-padding"> {/* Even section (8th in main) -> Pink BG */}
              <div class="container mx-auto container-padding centered-prose-narrow" data-aos="fade-up">
                 <h2 class="italic"><i>Contact</i></h2>
                 <p class="text-lg">Uit gestalkt? Indien u met ons wilt borrelen, u graag met ons naar een gala gaat of een ander voorstel heeft neem dan contact op met de Ab Actis. Voor alle overige zaken kunt u ook contact opnemen met de Ab Actis, hij luistert graag naar uw complexe verhaal.</p>
                 <div class="mt-8 text-lg">
                      <p>Met vriendelijke groet,</p>
                      <p class="mt-4">D.T. Boersma<br>
-                     <i class="font-serif text-base">Ab Actis</i></p>
+                     <i class="font-serif text-base opacity-90">Ab Actis</i></p>
                  </div>
-                 <a href="https://ahdperseverantia.nl/contact/" target="_blank" class="btn btn-primary mt-10">Neem contact op</a>
+                 <a href="https://ahdperseverantia.nl/contact/" target="_blank" class="btn btn-outline mt-10">Neem contact op</a>
              </div>
          </section>
     </main>
